@@ -90,7 +90,6 @@ public class WsiBasicProfileChecker {
             analyzer = new BasicProfileAnalyzer(analyzerArgs);
             // Have it process the conformance validation functions
             int statusCode = analyzer.validateConformance();
-            System.out.println("Status code: " + statusCode);
             ReportParser parser = new ReportParser();
             try {
                 parser.parse(reportFile);
