@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/">
+  <xs:import schemaLocation="BaseDataTypesDocLitW0.xsd" namespace="http://schemas.example.com/2003/10/Serialization/"/>
+  <xs:element name="RetBoolean">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inBool" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetBooleanResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetBooleanResult" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetUnsignedByte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inByte" type="xs:unsignedByte"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetUnsignedByteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetUnsignedByteResult" type="xs:unsignedByte"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetByte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inSByte" type="xs:byte"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetByteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetByteResult" type="xs:byte"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetBase64Binary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inByteArray" nillable="true" type="xs:base64Binary"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetBase64BinaryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetBase64BinaryResult" nillable="true" type="xs:base64Binary"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetDecimal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inDecimal" type="xs:decimal"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetDecimalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetDecimalResult" type="xs:decimal"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetFloat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inFloat" type="xs:float"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetFloatResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetFloatResult" type="xs:float"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetDouble">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inDouble" type="xs:double"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetDoubleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetDoubleResult" type="xs:double"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetInt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inInt" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetIntResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetIntResult" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetShort">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inShort" type="xs:short"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetShortResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetShortResult" type="xs:short"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetLong">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inLong" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetLongResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetLongResult" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetAnyType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inObject" nillable="true" type="xs:anyType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetAnyTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetAnyTypeResult" nillable="true" type="xs:anyType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetUnsignedInt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inUInt" type="xs:unsignedInt"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetUnsignedIntResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetUnsignedIntResult" type="xs:unsignedInt"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetUnsignedShort">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inUShort" type="xs:unsignedShort"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetUnsignedShortResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetUnsignedShortResult" type="xs:unsignedShort"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetUnsignedLong">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inULong" type="xs:unsignedLong"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetUnsignedLongResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetUnsignedLongResult" type="xs:unsignedLong"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetString">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inString" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetStringResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetStringResult" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetAnyUri">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inUri" nillable="true" type="xs:anyURI"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetAnyUriResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetAnyUriResult" nillable="true" type="xs:anyURI"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetDateTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inDateTime" type="xs:dateTime"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetDateTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetDateTimeResult" type="xs:dateTime"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetDuration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inTimeSpan" type="q7:duration" xmlns:q7="http://schemas.example.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetDurationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetDurationResult" type="q8:duration" xmlns:q8="http://schemas.example.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetQName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inQName" nillable="true" type="xs:QName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetQNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetQNameResult" nillable="true" type="xs:QName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

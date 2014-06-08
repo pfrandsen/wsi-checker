@@ -1,0 +1,14 @@
+<s:Envelope xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <a:Action s:mustUnderstand="1">http://tempuri.org/IBaseDataTypesDocLitW/RetAnyUri</a:Action>
+    <a:MessageID>urn:uuid:2224a2cd-9784-47c3-b81b-7e5417428d11</a:MessageID>
+    <a:ReplyTo>
+      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+    </a:ReplyTo>
+  </s:Header>
+  <s:Body>
+    <RetAnyUri xmlns="http://tempuri.org/">
+      <inUri>http://[3FFE:2A00:0100:7031:0000:0000:0000:0001]/</inUri>
+    </RetAnyUri>
+  </s:Body>
+</s:Envelope>

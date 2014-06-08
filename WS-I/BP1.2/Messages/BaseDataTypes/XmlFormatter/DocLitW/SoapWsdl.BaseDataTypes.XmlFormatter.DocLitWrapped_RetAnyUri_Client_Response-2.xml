@@ -1,0 +1,10 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <To s:mustUnderstand="1" xmlns="http://www.w3.org/2005/08/addressing">http://www.w3.org/2005/08/addressing/anonymous</To>
+  </s:Header>
+  <s:Body>
+    <RetAnyUriResponse xmlns="http://tempuri.org/">
+      <RetAnyUriResult>http://localhost/Hello/MyService.html</RetAnyUriResult>
+    </RetAnyUriResponse>
+  </s:Body>
+</s:Envelope>

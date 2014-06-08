@@ -1,0 +1,25 @@
+<s:Envelope xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <a:Action s:mustUnderstand="1">http://tempuri.org/IComplexDataTypesDocLitW/RetArrayString1D</a:Action>
+    <a:MessageID>urn:uuid:18bec88e-6770-434a-a9e0-d7cba01e1f6a</a:MessageID>
+    <a:ReplyTo>
+      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+    </a:ReplyTo>
+  </s:Header>
+  <s:Body>
+    <RetArrayString1D xmlns="http://tempuri.org/">
+      <inArrayString1D xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        <string i:nil="true" xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      </inArrayString1D>
+    </RetArrayString1D>
+  </s:Body>
+</s:Envelope>

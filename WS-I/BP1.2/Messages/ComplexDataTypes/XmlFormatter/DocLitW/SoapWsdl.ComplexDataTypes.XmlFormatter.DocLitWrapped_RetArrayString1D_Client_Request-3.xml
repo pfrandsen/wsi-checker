@@ -1,0 +1,25 @@
+<s:Envelope xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <a:Action s:mustUnderstand="1">http://tempuri.org/IComplexDataTypesDocLitW/RetArrayString1D</a:Action>
+    <a:MessageID>urn:uuid:f3fe9aab-ff79-44bd-93b0-f69eae053c59</a:MessageID>
+    <a:ReplyTo>
+      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+    </a:ReplyTo>
+  </s:Header>
+  <s:Body>
+    <RetArrayString1D xmlns="http://tempuri.org/">
+      <inArrayString1D xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 0</string>
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 1</string>
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 2</string>
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 3</string>
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 4</string>
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 5</string>
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 6</string>
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 7</string>
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 8</string>
+        <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">string Array Data 9</string>
+      </inArrayString1D>
+    </RetArrayString1D>
+  </s:Body>
+</s:Envelope>

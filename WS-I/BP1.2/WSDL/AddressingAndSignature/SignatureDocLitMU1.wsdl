@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://example.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://example.org/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:i0="http://example.org/signature" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import namespace="http://example.org/signature" location="SignatureDocLitMU0.wsdl"/>
+  <wsdl:types/>
+  <wsdl:binding name="CustomBinding_SignatureDocumentLiteralNoAction" type="i0:SignatureDocumentLiteralNoAction">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Sign2">
+      <soap:operation soapAction="http://example.org/signature/SignatureDocumentLiteralNoAction/Sign2" style="document" />
+      <wsdl:input name="SignatureInEmptyMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SignatureOutMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

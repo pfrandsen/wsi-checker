@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="ComplexDataTypesRpcLitService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://tempuri.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="BaseDataTypesDocLitW0.xsd" namespace="http://schemas.example.com/2003/10/Serialization/"/>
+      <xsd:import schemaLocation="ComplexDataTypesDocLitW2.xsd" namespace="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IComplexDataTypesRpcLit_RetArrayString1D_InputMessage">
+    <wsdl:part name="inArrayString1D" type="q1:StringArray" xmlns:q1="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+  </wsdl:message>
+  <wsdl:message name="IComplexDataTypesRpcLit_RetArrayString1D_OutputMessage">
+    <wsdl:part name="RetArrayString1DResult" type="q2:StringArray" xmlns:q2="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+  </wsdl:message>
+  <wsdl:message name="IComplexDataTypesRpcLit_RetArrayInt1D_InputMessage">
+    <wsdl:part name="inArrayInt1D" type="q3:IntArray" xmlns:q3="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+  </wsdl:message>
+  <wsdl:message name="IComplexDataTypesRpcLit_RetArrayInt1D_OutputMessage">
+    <wsdl:part name="RetArrayInt1DResult" type="q4:IntArray" xmlns:q4="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+  </wsdl:message>
+  <wsdl:portType name="IComplexDataTypesRpcLit">
+    <wsdl:operation name="RetArrayString1D" parameterOrder="inArrayString1D">
+      <wsdl:input wsam:Action="http://tempuri.org/IComplexDataTypesRpcLit/RetArrayString1D" message="tns:IComplexDataTypesRpcLit_RetArrayString1D_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IComplexDataTypesRpcLit/RetArrayString1DResponse" message="tns:IComplexDataTypesRpcLit_RetArrayString1D_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetArrayInt1D" parameterOrder="inArrayInt1D">
+      <wsdl:input wsam:Action="http://tempuri.org/IComplexDataTypesRpcLit/RetArrayInt1D" message="tns:IComplexDataTypesRpcLit_RetArrayInt1D_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IComplexDataTypesRpcLit/RetArrayInt1DResponse" message="tns:IComplexDataTypesRpcLit_RetArrayInt1D_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomBinding_IComplexDataTypesRpcLit" type="tns:IComplexDataTypesRpcLit">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+    <wsdl:operation name="RetArrayString1D">
+      <soap:operation soapAction="http://tempuri.org/IComplexDataTypesRpcLit/RetArrayString1D" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetArrayInt1D">
+      <soap:operation soapAction="http://tempuri.org/IComplexDataTypesRpcLit/RetArrayInt1D" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ComplexDataTypesRpcLitService">
+    <wsdl:port name="CustomBinding_IComplexDataTypesRpcLit" binding="tns:CustomBinding_IComplexDataTypesRpcLit">
+      <soap:address location="http://localhost/Soap11/ComplexDataTypesRpcLit"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

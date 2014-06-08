@@ -1,0 +1,25 @@
+<s:Envelope xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <a:Action s:mustUnderstand="1">http://tempuri.org/IComplexDataTypesRpcLit/RetArrayInt1D</a:Action>
+    <a:MessageID>urn:uuid:6b39d425-dd29-4504-8e11-b985b2f361c6</a:MessageID>
+    <a:ReplyTo>
+      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+    </a:ReplyTo>
+  </s:Header>
+  <s:Body>
+    <RetArrayInt1D xmlns="http://tempuri.org/">
+      <inArrayInt1D xmlns="">
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-100</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-99</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-98</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-97</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-96</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-95</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-94</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-93</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-92</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-91</int>
+      </inArrayInt1D>
+    </RetArrayInt1D>
+  </s:Body>
+</s:Envelope>

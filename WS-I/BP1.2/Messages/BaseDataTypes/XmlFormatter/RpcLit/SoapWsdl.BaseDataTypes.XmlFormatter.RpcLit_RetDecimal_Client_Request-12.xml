@@ -1,0 +1,14 @@
+<s:Envelope xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <a:Action s:mustUnderstand="1">http://tempuri.org/IBaseDataTypesRpcLit/RetDecimal</a:Action>
+    <a:MessageID>urn:uuid:ef14dc36-b1e8-40fa-b678-c8254cd2d44f</a:MessageID>
+    <a:ReplyTo>
+      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+    </a:ReplyTo>
+  </s:Header>
+  <s:Body>
+    <RetDecimal xmlns="http://tempuri.org/">
+      <inDecimal xmlns="">-1.23</inDecimal>
+    </RetDecimal>
+  </s:Body>
+</s:Envelope>

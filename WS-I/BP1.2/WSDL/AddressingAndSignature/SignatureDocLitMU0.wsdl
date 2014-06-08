@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://example.org/signature" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://example.org/signature" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://example.org/signature/Imports">
+      <xsd:import schemaLocation="SignatureDocLit1.xsd" namespace="http://example.org/signature"/>
+      <xsd:import schemaLocation="SignatureDocLit0.xsd" namespace="http://schemas.example.com/2003/10/Serialization/"/>
+      <xsd:import namespace="http://www.w3.org/2001/XMLSchema"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SignatureOutMessage">
+    <wsdl:part name="SignatureOut" element="tns:SignatureOut"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureInEmptyMessage"/>
+  <wsdl:portType name="SignatureDocumentLiteralNoAction">
+    <wsdl:operation name="Sign2">
+      <wsdl:input wsam:Action="http://example.org/signature/SignatureDocumentLiteralNoAction/Sign2" name="SignatureInEmptyMessage" message="tns:SignatureInEmptyMessage" />
+      <wsdl:output wsam:Action="http://example.org/signature/SignatureDocumentLiteralNoAction/Sign2Response" name="SignatureOutMessage" message="tns:SignatureOutMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://example.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://example.org" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa10="http://www.w3.org/2005/08/addressing">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://example.org/Imports">
+      <xsd:import schemaLocation="Addressing0.xsd" namespace="http://example.org/echo" />
+      <xsd:import schemaLocation="Addressing1.xsd" namespace="http://example.org/notify" />
+      <xsd:import schemaLocation="SignatureDocLit0.xsd" namespace="http://schemas.example.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="EchoInMessage">
+    <wsdl:part name="echoIn" element="q1:echoIn" xmlns:q1="http://example.org/echo" />
+  </wsdl:message>
+  <wsdl:message name="EchoOutMessage">
+    <wsdl:part name="echoOut" element="q1:echoOut" xmlns:q1="http://example.org/echo" />
+  </wsdl:message>
+  <wsdl:message name="NotifyMessage">
+    <wsdl:part name="notify" element="q2:notify" xmlns:q2="http://example.org/notify"/>
+  </wsdl:message>
+  <wsdl:portType name="wsaTestPortType">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsam:Action="http://example.org/action/echoIn" name="EchoInMessage" message="tns:EchoInMessage" />
+      <wsdl:output wsam:Action="http://example.org/action/echoOut" name="EchoOutMessage" message="tns:EchoOutMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Notify">
+      <wsdl:input wsam:Action="http://example.org/action/notify" name="NotifyMessage" message="tns:NotifyMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

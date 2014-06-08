@@ -1,0 +1,10 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <To s:mustUnderstand="1" xmlns="http://www.w3.org/2005/08/addressing">http://www.w3.org/2005/08/addressing/anonymous</To>
+  </s:Header>
+  <s:Body>
+    <RetDateTimeResponse xmlns="http://tempuri.org/">
+      <RetDateTimeResult>2005-01-01T11:00:00-08:00</RetDateTimeResult>
+    </RetDateTimeResponse>
+  </s:Body>
+</s:Envelope>

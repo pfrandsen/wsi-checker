@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="WSAddressingCR" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://tempuri.org/" xmlns:i0="http://example.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import namespace="http://example.org/" location="SignatureDocLitMU1.wsdl"/>
+  <wsdl:types/>
+  <wsdl:service name="WSAddressingCR">
+    <wsdl:port name="CustomBinding_SignatureDocumentLiteralNoAction" binding="i0:CustomBinding_SignatureDocumentLiteralNoAction">
+      <soap:address location="http://localhost/WSAddressingSignatureMU/Soap11/None"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

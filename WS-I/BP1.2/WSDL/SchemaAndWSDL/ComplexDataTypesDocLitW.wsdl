@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="ComplexDataTypesDocLitWService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/WSDL/SchemaAndWSDL/ComplexDataTypesDocLitW0.xsd" namespace="http://tempuri.org/"/>
+      <xsd:import schemaLocation="http://localhost/WSDL/SchemaAndWSDL/BaseDataTypesDocLitW0.xsd" namespace="http://schemas.example.com/2003/10/Serialization/"/>
+      <xsd:import schemaLocation="http://localhost/WSDL/SchemaAndWSDL/ComplexDataTypesDocLitW2.xsd" namespace="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IComplexDataTypesDocLitW_RetArrayString1D_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetArrayString1D"/>
+  </wsdl:message>
+  <wsdl:message name="IComplexDataTypesDocLitW_RetArrayString1D_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetArrayString1DResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IComplexDataTypesDocLitW_RetArrayInt1D_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetArrayInt1D"/>
+  </wsdl:message>
+  <wsdl:message name="IComplexDataTypesDocLitW_RetArrayInt1D_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetArrayInt1DResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="IComplexDataTypesDocLitW">
+    <wsdl:operation name="RetArrayString1D">
+      <wsdl:input wsam:Action="http://tempuri.org/IComplexDataTypesDocLitW/RetArrayString1D" message="tns:IComplexDataTypesDocLitW_RetArrayString1D_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IComplexDataTypesDocLitW/RetArrayString1DResponse" message="tns:IComplexDataTypesDocLitW_RetArrayString1D_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetArrayInt1D">
+      <wsdl:input wsam:Action="http://tempuri.org/IComplexDataTypesDocLitW/RetArrayInt1D" message="tns:IComplexDataTypesDocLitW_RetArrayInt1D_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IComplexDataTypesDocLitW/RetArrayInt1DResponse" message="tns:IComplexDataTypesDocLitW_RetArrayInt1D_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomBinding_IComplexDataTypesDocLitW" type="tns:IComplexDataTypesDocLitW">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RetArrayString1D">
+      <soap:operation soapAction="http://tempuri.org/IComplexDataTypesDocLitW/RetArrayString1D" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetArrayInt1D">
+      <soap:operation soapAction="http://tempuri.org/IComplexDataTypesDocLitW/RetArrayInt1D" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ComplexDataTypesDocLitWService">
+    <wsdl:port name="CustomBinding_IComplexDataTypesDocLitW" binding="tns:CustomBinding_IComplexDataTypesDocLitW">
+      <soap:address location="http://localhost/Soap11/ComplexDataTypesDocLitW"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

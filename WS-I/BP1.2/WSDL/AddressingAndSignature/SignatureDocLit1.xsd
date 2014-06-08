@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://example.org/signature" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://example.org/signature">
+  <xs:element name="SignatureIn" nillable="true" type="xs:string"/>
+  <xs:element name="SignatureOut" nillable="true" type="xs:string"/>
+  <xs:element name="SignatureInMultipartMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SignatureInFirstPart" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="SignatureInSecondPart" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SignatureInHeaderMember" nillable="true" type="xs:string"/>
+  <xs:element name="SignatureInHeader" nillable="true" type="xs:string"/>
+  <xs:element name="SignatureOutHeaderMember" nillable="true" type="xs:string"/>
+  <xs:element name="SignatureOutHeader" nillable="true" type="xs:string"/>
+  <xs:complexType name="SignatureHeaderFaultContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FaultAdditionalText" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SignatureHeaderFaultContract" nillable="true" type="tns:SignatureHeaderFaultContract"/>
+</xs:schema>

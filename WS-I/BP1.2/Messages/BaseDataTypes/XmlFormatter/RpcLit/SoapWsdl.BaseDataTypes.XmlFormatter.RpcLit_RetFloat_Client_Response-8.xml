@@ -1,0 +1,10 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <To s:mustUnderstand="1" xmlns="http://www.w3.org/2005/08/addressing">http://www.w3.org/2005/08/addressing/anonymous</To>
+  </s:Header>
+  <s:Body>
+    <RetFloatResponse xmlns="http://tempuri.org/">
+      <RetFloatResult xmlns="">-INF</RetFloatResult>
+    </RetFloatResponse>
+  </s:Body>
+</s:Envelope>

@@ -1,0 +1,14 @@
+<s:Envelope xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <a:Action s:mustUnderstand="1">http://tempuri.org/IBaseDataTypesDocLitW/RetDateTime</a:Action>
+    <a:MessageID>urn:uuid:63b4804c-251c-4bc3-9fb8-5acd0d686d2c</a:MessageID>
+    <a:ReplyTo>
+      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+    </a:ReplyTo>
+  </s:Header>
+  <s:Body>
+    <RetDateTime xmlns="http://tempuri.org/">
+      <inDateTime>9999-12-31T23:59:59.9999999</inDateTime>
+    </RetDateTime>
+  </s:Body>
+</s:Envelope>

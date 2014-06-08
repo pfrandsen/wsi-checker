@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://example.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://example.org/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:i0="http://example.org/signature" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa10="http://www.w3.org/2005/08/addressing">
+  <wsp:Policy wsu:Id="CustomBinding_SignatureDocumentLiteral_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsam:Addressing>
+          <wsp:Policy />
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="http://example.org/signature" location="SignatureDocLit0.wsdl"/>
+  <wsdl:types/>
+  <wsdl:binding name="CustomBinding_SignatureDocumentLiteral" type="i0:SignatureDocumentLiteral">
+    <wsp:PolicyReference URI="#CustomBinding_SignatureDocumentLiteral_policy"/>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+     <wsdl:operation name="Sign1">
+      <soap:operation soapAction="http://example.org/action/SignatureIn" style="document"/>
+      <wsdl:input name="SignatureInMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SignatureOutMessage">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sign2">
+      <soap:operation soapAction="http://example.org/action/SignatureInAlternate" style="document"/>
+      <wsdl:input name="SignatureRequestMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SignatureResponseMessage">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sign3">
+      <soap:operation soapAction="http://example.org/action/SignatureInEmpty" style="document"/>
+      <wsdl:input name="SignatureInEmptyMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SignatureReplyMessage">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sign4">
+      <soap:operation soapAction="http://example.org/action/SignatureInAlternateEmpty" style="document"/>
+      <wsdl:input name="SignatureInBlankMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SignatureOutputMessage">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sign5">
+      <soap:operation soapAction="http://example.org/action/SignatureEmptyPartIn" style="document"/>
+      <wsdl:input name="EmptyBodyMessage">
+        <soap:body use="literal" parts=""/>
+      </wsdl:input>
+      <wsdl:output name="NullBodyMessage">
+        <soap:body use="literal" parts=""/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sign6">
+      <soap:operation soapAction="http://example.org/action/SignatureInMultipart" style="document"/>
+      <wsdl:input name="SignatureInMultipartMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SignatureSecondMessage">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sign7">
+      <soap:operation soapAction="http://example.org/action/SignatureHeaderIn" style="document"/>
+      <wsdl:input name="SignatureInHeaderMessage">
+        <soap:header message="i0:SignatureInHeaderMessage_Headers" part="HeaderText" use="literal"/>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SignatureOutHeaderMessage">
+        <soap:header message="i0:SignatureOutHeaderMessage_Headers" part="HeaderText" use="literal"/>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SignatureHeaderFault">
+        <soap:fault name="SignatureHeaderFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

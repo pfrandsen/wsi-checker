@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="BaseDataTypesRpcLitService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://tempuri.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types />
+  <wsdl:message name="IBaseDataTypesRpcLit_RetBoolean_InputMessage">
+    <wsdl:part name="inBool" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetBoolean_OutputMessage">
+    <wsdl:part name="RetBooleanResult" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetUnsignedByte_InputMessage">
+    <wsdl:part name="inByte" type="xsd:unsignedByte"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetUnsignedByte_OutputMessage">
+    <wsdl:part name="RetUnsignedByteResult" type="xsd:unsignedByte"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetByte_InputMessage">
+    <wsdl:part name="inSByte" type="xsd:byte"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetByte_OutputMessage">
+    <wsdl:part name="RetByteResult" type="xsd:byte"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetBase64Binary_InputMessage">
+    <wsdl:part name="inByteArray" type="xsd:base64Binary"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetBase64Binary_OutputMessage">
+    <wsdl:part name="RetBase64BinaryResult" type="xsd:base64Binary"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetDecimal_InputMessage">
+    <wsdl:part name="inDecimal" type="xsd:decimal"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetDecimal_OutputMessage">
+    <wsdl:part name="RetDecimalResult" type="xsd:decimal"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetFloat_InputMessage">
+    <wsdl:part name="inFloat" type="xsd:float"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetFloat_OutputMessage">
+    <wsdl:part name="RetFloatResult" type="xsd:float"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetDouble_InputMessage">
+    <wsdl:part name="inDouble" type="xsd:double"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetDouble_OutputMessage">
+    <wsdl:part name="RetDoubleResult" type="xsd:double"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetInt_InputMessage">
+    <wsdl:part name="inInt" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetInt_OutputMessage">
+    <wsdl:part name="RetIntResult" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetShort_InputMessage">
+    <wsdl:part name="inShort" type="xsd:short"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetShort_OutputMessage">
+    <wsdl:part name="RetShortResult" type="xsd:short"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetLong_InputMessage">
+    <wsdl:part name="inLong" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetLong_OutputMessage">
+    <wsdl:part name="RetLongResult" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetAnyType_InputMessage">
+    <wsdl:part name="inObject" type="xsd:anyType"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetAnyType_OutputMessage">
+    <wsdl:part name="RetAnyTypeResult" type="xsd:anyType"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetUnsignedInt_InputMessage">
+    <wsdl:part name="inUInt" type="xsd:unsignedInt"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetUnsignedInt_OutputMessage">
+    <wsdl:part name="RetUnsignedIntResult" type="xsd:unsignedInt"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetUnsignedShort_InputMessage">
+    <wsdl:part name="inUShort" type="xsd:unsignedShort"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetUnsignedShort_OutputMessage">
+    <wsdl:part name="RetUnsignedShortResult" type="xsd:unsignedShort"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetUnsignedLong_InputMessage">
+    <wsdl:part name="inULong" type="xsd:unsignedLong"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetUnsignedLong_OutputMessage">
+    <wsdl:part name="RetUnsignedLongResult" type="xsd:unsignedLong"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetString_InputMessage">
+    <wsdl:part name="inString" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetString_OutputMessage">
+    <wsdl:part name="RetStringResult" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetAnyUri_InputMessage">
+    <wsdl:part name="inUri" type="xsd:anyURI"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetAnyUri_OutputMessage">
+    <wsdl:part name="RetAnyUriResult" type="xsd:anyURI"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetDateTime_InputMessage">
+    <wsdl:part name="inDateTime" type="xsd:dateTime"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetDateTime_OutputMessage">
+    <wsdl:part name="RetDateTimeResult" type="xsd:dateTime"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetDuration_InputMessage">
+    <wsdl:part name="inTimeSpan" type="xsd:duration" />
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetDuration_OutputMessage">
+    <wsdl:part name="RetDurationResult" type="xsd:duration" />
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetQName_InputMessage">
+    <wsdl:part name="inQName" type="xsd:QName"/>
+  </wsdl:message>
+  <wsdl:message name="IBaseDataTypesRpcLit_RetQName_OutputMessage">
+    <wsdl:part name="RetQNameResult" type="xsd:QName"/>
+  </wsdl:message>
+  <wsdl:portType name="IBaseDataTypesRpcLit">
+    <wsdl:operation name="RetBoolean" parameterOrder="inBool">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetBoolean" message="tns:IBaseDataTypesRpcLit_RetBoolean_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetBooleanResponse" message="tns:IBaseDataTypesRpcLit_RetBoolean_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetUnsignedByte" parameterOrder="inByte">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedByte" message="tns:IBaseDataTypesRpcLit_RetUnsignedByte_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedByteResponse" message="tns:IBaseDataTypesRpcLit_RetUnsignedByte_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetByte" parameterOrder="inSByte">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetByte" message="tns:IBaseDataTypesRpcLit_RetByte_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetByteResponse" message="tns:IBaseDataTypesRpcLit_RetByte_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetBase64Binary" parameterOrder="inByteArray">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetBase64Binary" message="tns:IBaseDataTypesRpcLit_RetBase64Binary_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetBase64BinaryResponse" message="tns:IBaseDataTypesRpcLit_RetBase64Binary_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetDecimal" parameterOrder="inDecimal">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetDecimal" message="tns:IBaseDataTypesRpcLit_RetDecimal_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetDecimalResponse" message="tns:IBaseDataTypesRpcLit_RetDecimal_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetFloat" parameterOrder="inFloat">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetFloat" message="tns:IBaseDataTypesRpcLit_RetFloat_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetFloatResponse" message="tns:IBaseDataTypesRpcLit_RetFloat_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetDouble" parameterOrder="inDouble">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetDouble" message="tns:IBaseDataTypesRpcLit_RetDouble_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetDoubleResponse" message="tns:IBaseDataTypesRpcLit_RetDouble_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetInt" parameterOrder="inInt">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetInt" message="tns:IBaseDataTypesRpcLit_RetInt_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetIntResponse" message="tns:IBaseDataTypesRpcLit_RetInt_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetShort" parameterOrder="inShort">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetShort" message="tns:IBaseDataTypesRpcLit_RetShort_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetShortResponse" message="tns:IBaseDataTypesRpcLit_RetShort_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetLong" parameterOrder="inLong">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetLong" message="tns:IBaseDataTypesRpcLit_RetLong_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetLongResponse" message="tns:IBaseDataTypesRpcLit_RetLong_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetAnyType" parameterOrder="inObject">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetAnyType" message="tns:IBaseDataTypesRpcLit_RetAnyType_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetAnyTypeResponse" message="tns:IBaseDataTypesRpcLit_RetAnyType_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetUnsignedInt" parameterOrder="inUInt">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedInt" message="tns:IBaseDataTypesRpcLit_RetUnsignedInt_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedIntResponse" message="tns:IBaseDataTypesRpcLit_RetUnsignedInt_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetUnsignedShort" parameterOrder="inUShort">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedShort" message="tns:IBaseDataTypesRpcLit_RetUnsignedShort_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedShortResponse" message="tns:IBaseDataTypesRpcLit_RetUnsignedShort_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetUnsignedLong" parameterOrder="inULong">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedLong" message="tns:IBaseDataTypesRpcLit_RetUnsignedLong_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedLongResponse" message="tns:IBaseDataTypesRpcLit_RetUnsignedLong_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetString" parameterOrder="inString">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetString" message="tns:IBaseDataTypesRpcLit_RetString_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetStringResponse" message="tns:IBaseDataTypesRpcLit_RetString_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetAnyUri" parameterOrder="inUri">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetAnyUri" message="tns:IBaseDataTypesRpcLit_RetAnyUri_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetAnyUriResponse" message="tns:IBaseDataTypesRpcLit_RetAnyUri_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetDateTime" parameterOrder="inDateTime">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetDateTime" message="tns:IBaseDataTypesRpcLit_RetDateTime_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetDateTimeResponse" message="tns:IBaseDataTypesRpcLit_RetDateTime_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetDuration" parameterOrder="inTimeSpan">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetDuration" message="tns:IBaseDataTypesRpcLit_RetDuration_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetDurationResponse" message="tns:IBaseDataTypesRpcLit_RetDuration_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetQName" parameterOrder="inQName">
+      <wsdl:input wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetQName" message="tns:IBaseDataTypesRpcLit_RetQName_InputMessage"/>
+      <wsdl:output wsam:Action="http://tempuri.org/IBaseDataTypesRpcLit/RetQNameResponse" message="tns:IBaseDataTypesRpcLit_RetQName_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomBinding_IBaseDataTypesRpcLit" type="tns:IBaseDataTypesRpcLit">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+    <wsdl:operation name="RetBoolean">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetBoolean" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetUnsignedByte">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedByte" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetByte">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetByte" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetBase64Binary">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetBase64Binary" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetDecimal">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetDecimal" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetFloat">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetFloat" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetDouble">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetDouble" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetInt">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetInt" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetShort">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetShort" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetLong">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetLong" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetAnyType">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetAnyType" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetUnsignedInt">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedInt" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetUnsignedShort">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedShort" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetUnsignedLong">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetUnsignedLong" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetString">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetString" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetAnyUri">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetAnyUri" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetDateTime">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetDateTime" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetDuration">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetDuration" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetQName">
+      <soap:operation soapAction="http://tempuri.org/IBaseDataTypesRpcLit/RetQName" style="rpc"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://tempuri.org/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BaseDataTypesRpcLitService">
+    <wsdl:port name="CustomBinding_IBaseDataTypesRpcLit" binding="tns:CustomBinding_IBaseDataTypesRpcLit">
+      <soap:address location="http://localhost/Soap11/BaseDataTypesRpcLit"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://example.org/signature" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://example.org/signature" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa10="http://www.w3.org/2005/08/addressing">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://example.org/signature/Imports">
+      <xsd:import schemaLocation="SignatureRpcLit1.xsd" namespace="http://example.org/signature"/>
+      <xsd:import namespace="http://www.w3.org/2001/XMLSchema"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SignatureRpcLiteral_Sign1_InputMessage"/>
+  <wsdl:message name="SignatureRpcLiteral_Sign1_OutputMessage">
+    <wsdl:part name="Sign1Result" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureRpcLiteral_Sign2_InputMessage">
+    <wsdl:part name="parameter1" type="xsd:string"/>
+    <wsdl:part name="parameter2" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureRpcLiteral_Sign2_OutputMessage">
+    <wsdl:part name="Sign2Result" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureRpcLiteral_Sign2_SignatureHeaderRpcFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SignatureHeaderFaultContractRpc"/>
+  </wsdl:message>
+  <wsdl:portType name="SignatureRpcLiteral">
+    <wsdl:operation name="Sign1">
+      <wsdl:input wsam:Action="http://example.org/action/SignatureRpcInEmpty" message="tns:SignatureRpcLiteral_Sign1_InputMessage"/>
+      <wsdl:output wsam:Action="http://example.org/action/SignatureRpcOutEmpty" message="tns:SignatureRpcLiteral_Sign1_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Sign2" parameterOrder="parameter1 parameter2">
+      <wsdl:input wsam:Action="http://example.org/action/SignatureHeaderRpcIn" message="tns:SignatureRpcLiteral_Sign2_InputMessage"/>
+      <wsdl:output wsam:Action="http://example.org/action/SignatureHeaderRpcReply" message="tns:SignatureRpcLiteral_Sign2_OutputMessage"/>
+      <wsdl:fault wsam:Action="http://example.org/action/SignatureHeaderFaultRpc" name="SignatureHeaderRpcFault" message="tns:SignatureRpcLiteral_Sign2_SignatureHeaderRpcFault_FaultMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

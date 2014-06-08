@@ -1,0 +1,21 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <To s:mustUnderstand="1" xmlns="http://www.w3.org/2005/08/addressing">http://www.w3.org/2005/08/addressing/anonymous</To>
+  </s:Header>
+  <s:Body>
+    <RetArrayInt1DResponse xmlns="http://tempuri.org/">
+      <RetArrayInt1DResult xmlns="">
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-100</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-99</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-98</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-97</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-96</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-95</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-94</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-93</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-92</int>
+        <int xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">-91</int>
+      </RetArrayInt1DResult>
+    </RetArrayInt1DResponse>
+  </s:Body>
+</s:Envelope>

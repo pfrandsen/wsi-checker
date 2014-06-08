@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/">
+  <xs:import schemaLocation="ComplexDataTypesDocLitW2.xsd" namespace="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+  <xs:element name="RetArrayString1D">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inArrayString1D" nillable="true" type="q1:StringArray" xmlns:q1="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetArrayString1DResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetArrayString1DResult" nillable="true" type="q2:StringArray" xmlns:q2="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetArrayInt1D">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inArrayInt1D" nillable="true" type="q3:IntArray" xmlns:q3="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetArrayInt1DResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetArrayInt1DResult" nillable="true" type="q4:IntArray" xmlns:q4="http://schemas.example.com/2003/10/Serialization/Arrays"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

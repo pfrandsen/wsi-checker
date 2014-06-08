@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://example.org/signature" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://example.org/signature" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa10="http://www.w3.org/2005/08/addressing">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://example.org/signature/Imports">
+      <xsd:import schemaLocation="SignatureDocLit1.xsd" namespace="http://example.org/signature"/>
+      <xsd:import schemaLocation="SignatureDocLit0.xsd" namespace="http://schemas.example.com/2003/10/Serialization/"/>
+      <xsd:import namespace="http://www.w3.org/2001/XMLSchema"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="EmptyBodyMessage" />
+  <wsdl:message name="NullBodyMessage" />
+  <wsdl:message name="SignatureInMessage">
+    <wsdl:part name="SignatureIn" element="tns:SignatureIn"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureRequestMessage">
+    <wsdl:part name="SignatureIn" element="tns:SignatureIn"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureOutMessage">
+    <wsdl:part name="SignatureOut" element="tns:SignatureOut"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureResponseMessage">
+    <wsdl:part name="SignatureOut" element="tns:SignatureOut"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureReplyMessage">
+    <wsdl:part name="SignatureOut" element="tns:SignatureOut"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureOutputMessage">
+    <wsdl:part name="SignatureOut" element="tns:SignatureOut"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureSecondMessage">
+    <wsdl:part name="SignatureOut" element="tns:SignatureOut"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureInEmptyMessage"/>
+  <wsdl:message name="SignatureInBlankMessage"/>
+  <wsdl:message name="SignatureInMultipartMessage">
+    <wsdl:part name="parameters" element="tns:SignatureInMultipartMessage"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureInHeaderMessage">
+    <wsdl:part name="SignatureInHeaderMember" element="tns:SignatureInHeaderMember"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureInHeaderMessage_Headers">
+    <wsdl:part name="HeaderText" element="tns:SignatureInHeader"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureOutHeaderMessage">
+    <wsdl:part name="SignatureOutHeaderMember" element="tns:SignatureOutHeaderMember"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureOutHeaderMessage_Headers">
+    <wsdl:part name="HeaderText" element="tns:SignatureOutHeader"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureDocumentLiteral_Sign7_SignatureHeaderFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SignatureHeaderFaultContract"/>
+  </wsdl:message>
+  <wsdl:portType name="SignatureDocumentLiteral">
+    <wsdl:operation name="Sign1">
+      <wsdl:input wsam:Action="http://example.org/action/SignatureIn" name="SignatureInMessage" message="tns:SignatureInMessage"/>
+      <wsdl:output wsam:Action="http://example.org/action/SignatureOut" name="SignatureOutMessage" message="tns:SignatureOutMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Sign2">
+      <wsdl:input wsam:Action="http://example.org/action/SignatureInAlternate" name="SignatureRequestMessage" message="tns:SignatureRequestMessage"/>
+      <wsdl:output wsam:Action="http://example.org/action/SignatureOutAlternate" name="SignatureResponseMessage" message="tns:SignatureResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Sign3">
+      <wsdl:input wsam:Action="http://example.org/action/SignatureInEmpty" name="SignatureInEmptyMessage" message="tns:SignatureInEmptyMessage"/>
+      <wsdl:output wsam:Action="http://example.org/action/SignatureOutEmpty" name="SignatureReplyMessage" message="tns:SignatureReplyMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Sign4">
+      <wsdl:input wsam:Action="http://example.org/action/SignatureInAlternateEmpty" name="SignatureInBlankMessage" message="tns:SignatureInBlankMessage"/>
+      <wsdl:output wsam:Action="http://example.org/action/SignatureOutAlternateEmpty" name="SignatureOutputMessage" message="tns:SignatureOutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Sign5">
+      <wsdl:input wsam:Action="http://example.org/action/SignatureEmptyPartIn" name="EmptyBodyMessage" message="tns:EmptyBodyMessage"/>
+      <wsdl:output wsam:Action="http://example.org/action/SignatureEmptyPartOut" name="NullBodyMessage" message="tns:NullBodyMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Sign6">
+      <wsdl:input wsam:Action="http://example.org/action/SignatureInMultipart" name="SignatureInMultipartMessage" message="tns:SignatureInMultipartMessage"/>
+      <wsdl:output wsam:Action="http://example.org/action/SignatureOutMultipart" name="SignatureSecondMessage" message="tns:SignatureSecondMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Sign7">
+      <wsdl:input wsam:Action="http://example.org/action/SignatureHeaderIn" name="SignatureInHeaderMessage" message="tns:SignatureInHeaderMessage"/>
+      <wsdl:output wsam:Action="http://example.org/action/SignatureHeaderReply" name="SignatureOutHeaderMessage" message="tns:SignatureOutHeaderMessage"/>
+      <wsdl:fault wsam:Action="http://example.org/action/SignatureHeaderFault" name="SignatureHeaderFault" message="tns:SignatureDocumentLiteral_Sign7_SignatureHeaderFault_FaultMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
