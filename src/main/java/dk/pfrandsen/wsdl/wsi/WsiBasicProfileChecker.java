@@ -148,7 +148,7 @@ public class WsiBasicProfileChecker {
             }
 
             public String getDescription() {
-                return "SSBP1+BP11 Simple SOAP Binding Profile version 1.0 + Ba1sic Profile version 1.0 " +
+                return "SSBP1+BP11 Simple SOAP Binding Profile version 1.0 + Ba1sic Profile version 1.1 " +
                         "Test Assertion Document (TAD), Final";
             }
 
