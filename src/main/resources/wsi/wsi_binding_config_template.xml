@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyze:configuration xmlns:analyze="http://www.ws-i.org/testing/2004/07/analyzerConfig/">
+    <analyze:verbose>%VERBOSE%</analyze:verbose>
+    <analyze:assertionResults type="all" messageEntry="false" failureMessage="true" assertionDescription="true" />
+    <analyze:reportFile location="%REPORT_FILE%" replace="true">
+        <analyze:addStyleSheet href="%STYLESHEET_FILE%" type="text/xsl" alternate="false" />
+    </analyze:reportFile>
+    <analyze:testAssertionsFile>%ASSERTION_FILE%</analyze:testAssertionsFile>
+    <analyze:wsdlReference>
+        <analyze:wsdlElement type="binding" namespace="%NAMESPACE%">%BINDING%</analyze:wsdlElement>
+        <analyze:wsdlURI>%WSDL_URI%</analyze:wsdlURI>
+    </analyze:wsdlReference>
+</analyze:configuration>
