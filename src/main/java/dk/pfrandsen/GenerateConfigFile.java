@@ -1,7 +1,5 @@
 package dk.pfrandsen;
 
-//
-
 import dk.pfrandsen.wsdl.*;
 import dk.pfrandsen.wsdl.wsi.WsiBasicProfileChecker;
 import org.apache.commons.cli.*;
@@ -14,6 +12,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+
+// TODO: Add options for specifying WS-I tools root and location of report stylesheet file
 
 public class GenerateConfigFile {
     static private String OPTION_HELP = "help";
@@ -70,11 +70,10 @@ public class GenerateConfigFile {
             cmd = parser.parse(options, args);
         } catch (ParseException exp) {
             // oops, something went wrong
-            // System.err.println("Command line parsing failed.  Reason: " + exp.getMessage());
             printHelp();
             return;
         }
-        if (cmd.hasOption("help")) {
+        if (cmd.hasOption(OPTION_HELP)) {
             printHelp();
             return;
         }

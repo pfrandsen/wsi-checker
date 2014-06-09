@@ -2,16 +2,25 @@ package dk.pfrandsen.wsdl;
 
 import com.ibm.wsdl.Constants;
 import com.ibm.wsdl.factory.WSDLFactoryImpl;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.wsdl.Binding;
 import javax.wsdl.Definition;
 import javax.wsdl.Service;
 import javax.wsdl.WSDLException;
 import javax.wsdl.xml.WSDLReader;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -67,4 +76,21 @@ public class Util {
         }
         return template.toString();
     }
+
+    public static String getReportLocation(Path configFile) throws ParserConfigurationException, SAXException, IOException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);  // Important!!!
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(configFile.toFile());
+        NodeList reportFileNodes = document.getElementsByTagNameNS("http://www.ws-i.org/testing/2004/07/analyzerConfig/", "reportFile");
+        if (reportFileNodes != null && reportFileNodes.getLength() > 0) {
+            Node node = reportFileNodes.item(0);
+            if (node instanceof Element) {
+                System.out.println(((Element) node).getAttribute("location"));
+                return ((Element) node).getAttribute("location");
+            }
+        }
+        return "";
+    }
+
 }

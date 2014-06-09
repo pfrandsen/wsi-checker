@@ -2,6 +2,31 @@
 
 Utility for running WS-I.org Basic Profile 1.1 validation tool
 
+## Build/test
+
+### Tool to analyze wsdl
+
+* To build stand alone jar: mvn package
+* Run: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -config <file>  [-summary <file>]
+
+Examples:
+
+* java -jar target/wsi-checker-1.0-SNAPSHOT.jar -config target/config.xml
+* java -jar target/wsi-checker-1.0-SNAPSHOT.jar -config target/config.xml -summary target/summary.json
+
+
+### Tool to generate wsi configuration file
+
+* To build stand alone jar: mvn -Pconfig package
+* Run: java -jar target/config-generator.jar -wsdl <file> -report <file> -out <file>
+* Run: java -jar target/config-generator.jar -wsdl <file> -report <file> -out <file> -binding <index>
+
+Example: java -jar target/config-generator.jar -wsdl src/test/resources/wsdl/wsdl_1.wsdl -report target/report.xml
+ -output target/config.xml
+
+Default is to use the first binding in the wsdl. If the wsdl has more than one binding, add the -binding option to
+generate config file for a specific binding.
+
 ## Content
 
 ### src/main/java
