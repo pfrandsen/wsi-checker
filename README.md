@@ -18,8 +18,8 @@ Examples:
 ### Tool to generate wsi configuration file
 
 * To build stand alone jar: mvn -Pconfig package
-* Run: java -jar target/config-generator.jar -wsdl file -report file -out file
-* Run: java -jar target/config-generator.jar -wsdl file -report file -out file -binding index
+* Run: java -jar target/config-generator.jar -wsdl file -report file -output file
+* Run: java -jar target/config-generator.jar -wsdl file -report file -output file -binding index
 
 Example: java -jar target/config-generator.jar -wsdl src/test/resources/wsdl/wsdl_1.wsdl -report target/report.xml
  -output target/config.xml
