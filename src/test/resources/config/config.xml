@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyze:configuration xmlns:analyze="http://www.ws-i.org/testing/2004/07/analyzerConfig/">
+    <analyze:verbose>true</analyze:verbose>
+    <analyze:assertionResults type="all" messageEntry="false" failureMessage="true" assertionDescription="true" />
+    <analyze:reportFile location="target/report.xml" replace="true">
+        <analyze:addStyleSheet href="WS-I/wsi-test-tools/common/xsl/report.xsl" type="text/xsl" alternate="false" />
+    </analyze:reportFile>
+    <analyze:testAssertionsFile>WS-I/wsi-test-tools/common/profiles/SSBP10_BP11_TAD.xml</analyze:testAssertionsFile>
+    <analyze:wsdlReference>
+        <analyze:wsdlElement type="binding" namespace="http://service.schemas/domain/service/v1">EntityBinding</analyze:wsdlElement>
+        <analyze:wsdlURI>src/test/resources/wsdl/wsdl_1.wsdl</analyze:wsdlURI>
+    </analyze:wsdlReference>
+</analyze:configuration>
