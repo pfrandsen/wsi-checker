@@ -44,9 +44,9 @@ public class WsiBasicProfileCheckerTest {
             WsiBasicProfileChecker.generateBindingConfigFile(template, config, report, url, toolsRoot, profile,
                     binding, namespace, true);
             WsiBasicProfileChecker.checkWsiBasicProfile(config, report, toolsRoot, profile, collector);
-            assertEquals(0, collector.getErrorCount());
-            assertEquals(0, collector.getWarningCount());
-            assertEquals(0, collector.getInfoCount());
+            assertEquals(0, collector.errorCount());
+            assertEquals(0, collector.warningCount());
+            assertEquals(0, collector.infoCount());
         } finally {
             Files.delete(config);
             Files.delete(report);
@@ -74,9 +74,9 @@ public class WsiBasicProfileCheckerTest {
             WsiBasicProfileChecker.generateBindingConfigFile(template, config, report, url, toolsRoot, profile,
                     binding, namespace, true);
             WsiBasicProfileChecker.checkWsiBasicProfile(config, report, toolsRoot, profile, collector);
-            assertEquals(error, collector.getErrorCount());
-            assertEquals(warning, collector.getWarningCount());
-            assertEquals(info, collector.getInfoCount());
+            assertEquals(error, collector.errorCount());
+            assertEquals(warning, collector.warningCount());
+            assertEquals(info, collector.infoCount());
         } finally {
             Files.delete(config);
             Files.delete(report);

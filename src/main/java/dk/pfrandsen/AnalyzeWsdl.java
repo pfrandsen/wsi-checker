@@ -5,14 +5,9 @@ import dk.pfrandsen.check.AnalysisInformationCollector;
 import dk.pfrandsen.wsdl.*;
 import dk.pfrandsen.wsdl.wsi.WsiBasicProfileChecker;
 import org.apache.commons.cli.*;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 // TODO: Add options for specifying WS-I tools root and location of report stylesheet file
 
@@ -77,7 +72,7 @@ public class AnalyzeWsdl {
             WsiBasicProfileChecker.checkWsiBasicProfile(config, report, toolsRoot, profile, collector);
             if (cmd.hasOption(OPTION_SUMMARY)) {
                 // TODO: Serialize collector - use JSON lib - for now just dump to console
-                if (collector.getErrorCount() > 0)  {
+                if (collector.errorCount() > 0)  {
                     System.out.println(" \"errors\":[");
                     String delim = "";
                     for (AnalysisInformation error :  collector.getErrors()) {
@@ -87,8 +82,8 @@ public class AnalyzeWsdl {
                     }
                     System.out.println("]");
                 }
-                if (collector.getWarningCount() > 0)  {
-                    if (collector.getErrorCount() > 0) {
+                if (collector.warningCount() > 0)  {
+                    if (collector.errorCount() > 0) {
                         System.out.println(",");
                     }
                     System.out.println(" \"warnings\":[");

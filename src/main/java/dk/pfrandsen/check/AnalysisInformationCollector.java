@@ -53,15 +53,30 @@ public class AnalysisInformationCollector {
         return Collections.unmodifiableList(errors);
     }
 
+    // used by json de-serializer
+    public void setErrors(List<AnalysisInformation> errors) {
+        this.errors = errors;
+    }
+
     public List<AnalysisInformation> getWarnings() {
         return Collections.unmodifiableList(warnings);
+    }
+
+    // used by json de-serializer
+    public void setWarnings(List<AnalysisInformation> warnings) {
+        this.warnings = warnings;
     }
 
     public List<AnalysisInformation> getInfo() {
         return Collections.unmodifiableList(info);
     }
 
-    public int getErrorCount() {
+    // used by json de-serializer
+    public void setInfo(List<AnalysisInformation> info) {
+        this.info = info;
+    }
+
+    public int errorCount() {
         return errors.size();
     }
 
@@ -73,7 +88,7 @@ public class AnalysisInformationCollector {
         add(errors, assertion, message, severity, details);
     }
 
-    public int getWarningCount() {
+    public int warningCount() {
         return warnings.size();
     }
 
@@ -85,7 +100,7 @@ public class AnalysisInformationCollector {
         add(warnings, assertion, message, severity, details);
     }
 
-    public int getInfoCount() {
+    public int infoCount() {
         return info.size();
     }
 
