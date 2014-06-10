@@ -44,7 +44,10 @@ been cleaned up to just contain the libraries (wsi-test-tools.jar, wsdl4j.jar, u
 moved to the pom. These are the jar files that this project need for the WSDL validation being performed. Other
 validations may need more of the libraries from the standard tool distribution.
 
-### Example: Running the analyzer from a Java program
+The libraries have also been installed in the local maven repository (WS-I/repository) to enable building stand
+alone (executable) jars.
+
+#### Example: Running the analyzer from a Java program
 
 ``` java
     public runner() throws IOException {
