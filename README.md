@@ -52,7 +52,7 @@ alone (executable) jars.
 ``` java
     public runner() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("java", "-jar", "target/wsi-checker-1.0-SNAPSHOT.jar",
-                "-config", "target/config.xml", "-summary", "target/summary2.json");
+                "-config", "target/config.xml", "-summary", "target/summary.json");
         Process process = builder.start();
         InputStream fromProcess = process.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(fromProcess));
