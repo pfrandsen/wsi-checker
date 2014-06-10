@@ -16,7 +16,6 @@ import java.util.List;
 // TODO: Add options for specifying WS-I tools root and location of report stylesheet file
 
 public class GenerateConfigFile {
-    static private String OPTION_HELP = "help";
     static private String OPTION_WSDL = "wsdl";
     static private String OPTION_REPORT = "report";
     static private String OPTION_OUTPUT = "output";
@@ -34,7 +33,7 @@ public class GenerateConfigFile {
 
     private static Options getCommandlineOptions() {
         Options options = new Options();
-        Option help = new Option(OPTION_HELP, USAGE);
+        Option help = new Option(Runner.OPTION_HELP, USAGE);
 
         Option wsdl = OptionBuilder.withArgName("file")
                 .hasArg()
@@ -77,7 +76,7 @@ public class GenerateConfigFile {
             printHelp();
             return;
         }
-        if (cmd.hasOption(OPTION_HELP)) {
+        if (cmd.hasOption(Runner.OPTION_HELP)) {
             printHelp();
             return;
         }
@@ -98,6 +97,7 @@ public class GenerateConfigFile {
             }
         }
 
+        boolean success = true;
         try {
             Definition definition = Util.getWsdlDefinition(wsdl);
             List<Binding> bindings = Util.getBindings(definition);
@@ -117,9 +117,12 @@ public class GenerateConfigFile {
             WsiBasicProfileChecker.generateBindingConfigFile(template, output, report, wsdl, toolsRoot, profile,
                     binding, namespace, true);
         } catch (WSDLException e) {
+            success = false;
             System.err.println("Exception while parsing wsdl - " + e.getMessage());
         } catch (IOException e) {
+            success = false;
             System.err.println("IO exception" + e.getMessage());
         }
+        System.out.println("Generate config file completed with status: " + (success ? "SUCCESS" : "FAILURE"));
     }
 }

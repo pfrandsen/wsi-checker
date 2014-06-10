@@ -6,7 +6,7 @@ public class Runner {
     public static String OPTION_ANALYZE = "analyze";
     public static String OPTION_CONFIG_FILE = "generateConfig";
     public static String OPTION_UNPACK = "unpackTool";
-    static private String OPTION_HELP = "help";
+    public static String OPTION_HELP = "help";
     static private String USAGE = "to get help for tool use: java -jar <jar-file> -" + OPTION_HELP + " -<tool>";
 
     private static void printHelp() {
@@ -45,19 +45,19 @@ public class Runner {
             if (cmd.hasOption(OPTION_HELP)) {
                 AnalyzeWsdl.printHelp();
             } else {
-                System.out.println("Running analyzer");
+                AnalyzeWsdl.main(args);
             }
         } else if (cmd.hasOption(OPTION_CONFIG_FILE)) {
             if (cmd.hasOption(OPTION_HELP)) {
                 GenerateConfigFile.printHelp();
             } else {
-                System.out.println("Creating configuration file");
+                GenerateConfigFile.main(args);
             }
         } else if (cmd.hasOption(OPTION_UNPACK)) {
             if (cmd.hasOption(OPTION_HELP)) {
-                System.out.println("Help for tool file extractor");
+                UnpackTool.printHelp();
             } else {
-                System.out.println("Extracting tool files");
+                UnpackTool.main(args);
             }
         } else {
             System.out.println("Required option -" + OPTION_ANALYZE + " or -" + OPTION_CONFIG_FILE + " or -"

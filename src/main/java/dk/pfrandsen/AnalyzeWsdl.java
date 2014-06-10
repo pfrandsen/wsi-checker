@@ -1,20 +1,17 @@
 package dk.pfrandsen;
 
 import com.fasterxml.jackson.jr.ob.JSON;
-import dk.pfrandsen.check.AnalysisInformation;
 import dk.pfrandsen.check.AnalysisInformationCollector;
 import dk.pfrandsen.wsdl.*;
 import dk.pfrandsen.wsdl.wsi.WsiBasicProfileChecker;
 import org.apache.commons.cli.*;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 // TODO: Add options for specifying WS-I tools root and location of report stylesheet file
 
 public class AnalyzeWsdl {
-    static private String OPTION_HELP = "help";
     static private String OPTION_CONFIG = "config";
     static private String OPTION_SUMMARY = "summary";
     static private String USAGE = "Usage: java -jar <jar-file> -" + Runner.OPTION_ANALYZE + " -" + OPTION_CONFIG
@@ -30,7 +27,7 @@ public class AnalyzeWsdl {
 
     private static Options getCommandlineOptions() {
         Options options = new Options();
-        Option help = new Option(OPTION_HELP, USAGE);
+        Option help = new Option(Runner.OPTION_HELP, USAGE);
 
         Option config = OptionBuilder.withArgName("file")
                 .hasArg()
@@ -62,11 +59,12 @@ public class AnalyzeWsdl {
             printHelp();
             return;
         }
-        if (cmd.hasOption(OPTION_HELP)) {
+        if (cmd.hasOption(Runner.OPTION_HELP)) {
             printHelp();
             return;
         }
 
+        boolean success = true;
         Path config = Paths.get(cmd.getOptionValue(OPTION_CONFIG)).toAbsolutePath();
         System.out.println("Config file: " + config);
         try {
@@ -84,8 +82,9 @@ public class AnalyzeWsdl {
             }
         } catch (Exception e) {
             System.err.println("Exception " + e.getMessage());
+            success = false;
         }
-        System.out.println("WSDL analysis completed with status: SUCCESS");
+        System.out.println("WSDL analysis completed with status: " + (success ? "SUCCESS" : "FAILURE"));
     }
 
 }
