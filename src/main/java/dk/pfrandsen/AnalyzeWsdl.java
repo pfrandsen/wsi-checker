@@ -1,11 +1,13 @@
 package dk.pfrandsen;
 
+import com.fasterxml.jackson.jr.ob.JSON;
 import dk.pfrandsen.check.AnalysisInformation;
 import dk.pfrandsen.check.AnalysisInformationCollector;
 import dk.pfrandsen.wsdl.*;
 import dk.pfrandsen.wsdl.wsi.WsiBasicProfileChecker;
 import org.apache.commons.cli.*;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -69,36 +71,17 @@ public class AnalyzeWsdl {
             Path toolsRoot = WsiBasicProfileChecker.getDefaultWsiTestToolsRoot();
             WsiBasicProfileChecker.WsiProfile profile = WsiBasicProfileChecker.getDefaultWsiProfile();
             AnalysisInformationCollector collector = new AnalysisInformationCollector();
+            System.out.println("Analyzing wsdl...");
             WsiBasicProfileChecker.checkWsiBasicProfile(config, report, toolsRoot, profile, collector);
             if (cmd.hasOption(OPTION_SUMMARY)) {
-                // TODO: Serialize collector - use JSON lib - for now just dump to console
-                if (collector.errorCount() > 0)  {
-                    System.out.println(" \"errors\":[");
-                    String delim = "";
-                    for (AnalysisInformation error :  collector.getErrors()) {
-                        System.out.print(delim);
-                        System.out.println(error.toJson());
-                        delim = ", ";
-                    }
-                    System.out.println("]");
-                }
-                if (collector.warningCount() > 0)  {
-                    if (collector.errorCount() > 0) {
-                        System.out.println(",");
-                    }
-                    System.out.println(" \"warnings\":[");
-                    String delim = "";
-                    for (AnalysisInformation warning :  collector.getWarnings()) {
-                        System.out.print(delim);
-                        System.out.println(warning.toJson());
-                        delim = ", ";
-                    }
-                    System.out.println("]");
-                }
+                System.out.println("Generating summary...");
+                Path summary = Paths.get(cmd.getOptionValue(OPTION_SUMMARY)).toAbsolutePath();
+                JSON.std.with(JSON.Feature.PRETTY_PRINT_OUTPUT).write(collector, summary.toFile());
             }
         } catch (Exception e) {
             System.err.println("Exception " + e.getMessage());
         }
+        System.out.println("WSDL analysis completed with status: SUCCESS");
     }
 
 }

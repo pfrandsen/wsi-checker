@@ -3,8 +3,7 @@ package dk.pfrandsen.check;
 import com.fasterxml.jackson.jr.ob.JSON;
 import org.junit.Test;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
