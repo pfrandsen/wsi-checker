@@ -31,7 +31,6 @@ public class SerializationTest {
                 "[{\"assertion\":\"Assertion id 1\",\"details\":\"\",\"message\":\"Error message 1\",\"severity\":1}," +
                 "{\"assertion\":\"Assertion id 2\",\"details\":\"\",\"message\":\"Error message 2\",\"severity\":2}]," +
                 "\"info\":[],\"warnings\":[]}";
-
         AnalysisInformationCollector collector = JSON.std.beanFrom(AnalysisInformationCollector.class, json);
         assertEquals(2, collector.errorCount());
         assertEquals(0, collector.warningCount());
@@ -40,7 +39,7 @@ public class SerializationTest {
     }
 
     @Test
-    public void testCollectorParserFromFile() throws IOException, URISyntaxException {
+    public void testCollectorParseFromFile() throws IOException, URISyntaxException {
         String jsonFile = getLocation("/json/serialized.json");
         AnalysisInformationCollector collector = JSON.std.beanFrom(AnalysisInformationCollector.class,
                 new FileInputStream(Paths.get(jsonFile).toFile()));
@@ -50,6 +49,16 @@ public class SerializationTest {
         assertEquals(AnalysisInformationCollector.SEVERITY_LEVEL_UNKNOWN, collector.getWarnings().get(0).getSeverity());
         assertEquals(AnalysisInformationCollector.SEVERITY_LEVEL_MAJOR, collector.getWarnings().get(1).getSeverity());
         assertEquals("Info message 1", collector.getInfo().get(0).getMessage());
+    }
+
+    @Test
+    public void testCollectorParseEmptyFromFile() throws IOException, URISyntaxException {
+        String jsonFile = getLocation("/json/empty.json");
+        AnalysisInformationCollector collector = JSON.std.beanFrom(AnalysisInformationCollector.class,
+                new FileInputStream(Paths.get(jsonFile).toFile()));
+        assertEquals(0, collector.errorCount());
+        assertEquals(0, collector.warningCount());
+        assertEquals(0, collector.infoCount());
     }
 
     @Test
