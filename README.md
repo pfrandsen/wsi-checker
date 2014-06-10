@@ -43,3 +43,23 @@ The WS-I folder contains the ws-i.org basic profile libraries, profiles schemas 
 been cleaned up to just contain the libraries (wsi-test-tools.jar, wsdl4j.jar, uddi4j.jar) and xerces has been
 moved to the pom. These are the jar files that this project need for the WSDL validation being performed. Other
 validations may need more of the libraries from the standard tool distribution.
+
+### Example: Running the analyzer from a Java program
+
+``` java
+    public runner() throws IOException {
+        ProcessBuilder builder = new ProcessBuilder("java", "-jar", "target/wsi-checker-1.0-SNAPSHOT.jar",
+                "-config", "target/config.xml", "-summary", "target/summary2.json");
+        Process process = builder.start();
+        InputStream fromProcess = process.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(fromProcess));
+        String line;
+        boolean success = false;
+        while ((line = reader.readLine()) != null) {
+            if (line.startsWith("WSDL analysis completed with status: SUCCESS")) {
+                success = true;
+            }
+        }
+        System.out.println(success ? "Success" : "failure");
+    }
+```
