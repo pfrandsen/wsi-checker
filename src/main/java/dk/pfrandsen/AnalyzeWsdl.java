@@ -17,10 +17,13 @@ public class AnalyzeWsdl {
     static private String OPTION_HELP = "help";
     static private String OPTION_CONFIG = "config";
     static private String OPTION_SUMMARY = "summary";
-    static private String USAGE = "Usage: java -jar <jar-file> -" + OPTION_CONFIG + " <file> " +
-            " [-" + OPTION_SUMMARY + " <file>]";
+    static private String USAGE = "Usage: java -jar <jar-file> -" + Runner.OPTION_ANALYZE + " -" + OPTION_CONFIG
+            + " <file> " + " [-" + OPTION_SUMMARY + " <file>]";
 
-    private static void printHelp() {
+    public static void printHelp() {
+        System.out.println();
+        System.out.println("Tool for analyzing WSDL for WS-I compliance.");
+        System.out.println();
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp(USAGE, getCommandlineOptions());
     }
@@ -40,6 +43,7 @@ public class AnalyzeWsdl {
                 .create(OPTION_SUMMARY);
 
         options.addOption(help);
+        options.addOption(new Option(Runner.OPTION_ANALYZE, "option to select this tool"));
         options.addOption(config);
         options.addOption(summary);
         return options;

@@ -21,10 +21,13 @@ public class GenerateConfigFile {
     static private String OPTION_REPORT = "report";
     static private String OPTION_OUTPUT = "output";
     static private String OPTION_BINDING = "binding";
-    static private String USAGE = "Usage: java -jar <jar-file> -" + OPTION_WSDL + " <file> -" + OPTION_REPORT +
-            " <file> -" + OPTION_OUTPUT + " <file> [-" + OPTION_BINDING + " <index>]";
+    static private String USAGE = "Usage: java -jar <jar-file> -" + Runner.OPTION_CONFIG_FILE + " -" + OPTION_WSDL
+            + " <file> -" + OPTION_REPORT + " <file> -" + OPTION_OUTPUT + " <file> [-" + OPTION_BINDING + " <index>]";
 
-    private static void printHelp() {
+    public static void printHelp() {
+        System.out.println();
+        System.out.println("Tool for generating WS-I analyzer configuration file.");
+        System.out.println();
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp(USAGE, getCommandlineOptions());
     }
@@ -54,6 +57,7 @@ public class GenerateConfigFile {
                 .create(OPTION_BINDING);
 
         options.addOption(help);
+        options.addOption(new Option(Runner.OPTION_CONFIG_FILE, "option to select this tool"));
         options.addOption(wsdl);
         options.addOption(report);
         options.addOption(output);
