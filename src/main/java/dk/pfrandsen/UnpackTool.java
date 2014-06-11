@@ -73,10 +73,10 @@ public class UnpackTool {
             while (entry != null) {
                 String fileName = entry.getName();
                 if (entry.isDirectory()) {
-                    System.out.println("Directory " + entry.getName());
+                    // System.out.println("Directory " + entry.getName());
                     (new File(rootFolder.toString() + File.separator + entry.getName())).mkdirs();
                 } else {
-                    System.out.println("File " + fileName);
+                    // System.out.println("File " + fileName);
                     File f = new File(rootFolder.toString() + File.separator + fileName);
                     new File(f.getParent()).mkdirs(); // should already be created (directory entry should come
                     // before file entries)
