@@ -2,6 +2,8 @@ package dk.pfrandsen;
 
 import org.apache.commons.cli.*;
 
+import java.util.*;
+
 public class Runner {
     public static String OPTION_ANALYZE = "analyze";
     public static String OPTION_CONFIG_FILE = "generateConfig";
@@ -41,21 +43,55 @@ public class Runner {
             return;
         }
 
+        List<String> toolOptions = Arrays.asList(OPTION_ANALYZE, OPTION_CONFIG_FILE, OPTION_UNPACK);
+        if (cmd.hasOption(OPTION_HELP)) {
+            for (String tool : toolOptions) {
+                // get instance
+                // call help method
+            }
+        }
+/*            Map<String, Class<?>> tools = new HashMap<>();
+        //tools.put(OPTION_ANALYZE, AnalyzeWsdl.class);
+        //tools.put(OPTION_CONFIG_FILE, GenerateConfigFile.class);
+        tools.put(OPTION_UNPACK, UnpackTool.class);
+        CommandLineTool t = null;
+        for (Map.Entry<String, Class<?>> toolEntry : tools.entrySet()) {
+            if (cmd.hasOption(toolEntry.getKey())) {
+                try {
+                    t = (CommandLineTool)toolEntry.getValue().newInstance();
+                } catch (Exception e) {
+                    System.out.println("Exception " + e.getMessage());
+                }
+            }
+        }
+        if (t != null) {
+            if (cmd.hasOption(OPTION_HELP)) {
+                ((CommandLineTool)t).printHelp();
+            }
+        } else {
+            System.out.println("Required option -" + OPTION_ANALYZE + " or -" + OPTION_CONFIG_FILE + " or -"
+                    + OPTION_UNPACK + " not provided");
+            printHelp();
+        } */
+
         if (cmd.hasOption(OPTION_ANALYZE)) {
             if (cmd.hasOption(OPTION_HELP)) {
-                AnalyzeWsdl.printHelp();
+                AnalyzeWsdl tool = new AnalyzeWsdl();
+                tool.printHelp();
             } else {
                 AnalyzeWsdl.main(args);
             }
         } else if (cmd.hasOption(OPTION_CONFIG_FILE)) {
             if (cmd.hasOption(OPTION_HELP)) {
-                GenerateConfigFile.printHelp();
+                GenerateConfigFile tool = new GenerateConfigFile();
+                tool.printHelp();
             } else {
                 GenerateConfigFile.main(args);
             }
         } else if (cmd.hasOption(OPTION_UNPACK)) {
             if (cmd.hasOption(OPTION_HELP)) {
-                UnpackTool.printHelp();
+                UnpackTool tool = new UnpackTool();
+                tool.printHelp();
             } else {
                 UnpackTool.main(args);
             }

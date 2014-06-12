@@ -19,8 +19,8 @@ import java.util.List;
 public class ReportParser {
 
     private boolean passed = false;
-    private List<String> errors = new ArrayList<String>();
-    private List<String> warnings = new ArrayList<String>();
+    private List<String> errors = new ArrayList<>();
+    private List<String> warnings = new ArrayList<>();
 
     public boolean isPassed() {
         return passed;

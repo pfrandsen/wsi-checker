@@ -2,6 +2,7 @@ package dk.pfrandsen.wsdl;
 
 import com.ibm.wsdl.Constants;
 import com.ibm.wsdl.factory.WSDLFactoryImpl;
+import com.sun.istack.internal.NotNull;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,10 +17,7 @@ import javax.wsdl.xml.WSDLReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,6 +25,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Util {
+
+    public static Definition getWsdlDefinition(Path path) throws WSDLException {
+        return getWsdlDefinition(path.toString());
+    }
 
     public static Definition getWsdlDefinition(String uri) throws WSDLException {
         WSDLReader reader = WSDLFactoryImpl.newInstance().newWSDLReader();
@@ -77,20 +79,50 @@ public class Util {
         return template.toString();
     }
 
-    public static String getReportLocation(Path configFile) throws ParserConfigurationException, SAXException, IOException {
+    public static String getReportLocationFromConfigFile(Path configFile) throws Exception {
+        Element element = item(getConfigFileElementsByTagName(configFile, "reportFile"), 0);
+        if (element != null) {
+            return  ("" + element.getAttribute("location")).trim();
+        }
+        return "";
+    }
+
+    public static String getDescriptionFromConfigFile(Path configFile) throws Exception {
+        Element element = item(getConfigFileElementsByTagName(configFile, "description"), 0);
+        if (element != null) {
+            return  ("" + element.getTextContent()).trim();
+        }
+        return "";
+    }
+
+    private static NodeList getConfigFileElementsByTagName(Path configFile, String tagName) throws Exception{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);  // Important!!!
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(configFile.toFile());
-        NodeList reportFileNodes = document.getElementsByTagNameNS("http://www.ws-i.org/testing/2004/07/analyzerConfig/", "reportFile");
-        if (reportFileNodes != null && reportFileNodes.getLength() > 0) {
-            Node node = reportFileNodes.item(0);
-            if (node instanceof Element) {
-                System.out.println(((Element) node).getAttribute("location"));
-                return ((Element) node).getAttribute("location");
+        return document.getElementsByTagNameNS("http://www.ws-i.org/testing/2004/07/analyzerConfig/", tagName);
+    }
+
+    private static Element item(NodeList nodeList, int index) {
+        if (index >= 0) {
+            if (nodeList != null && nodeList.getLength() > index) {
+                Node node = nodeList.item(index);
+                if (node instanceof Element) {
+                    return (Element)node;
+                }
             }
         }
-        return "";
+        return null;
+    }
+
+    public static String concatenate(List<String> values, String separator) {
+        String sep = "";
+        StringBuilder builder = new StringBuilder();
+        for (String value : values) {
+            builder.append(value).append(sep);
+            sep = separator;
+        }
+        return builder.toString();
     }
 
 }
