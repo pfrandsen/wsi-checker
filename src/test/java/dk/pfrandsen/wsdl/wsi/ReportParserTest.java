@@ -1,6 +1,5 @@
-package dk.pfrandsen.wsdl;
+package dk.pfrandsen.wsdl.wsi;
 
-import dk.pfrandsen.wsdl.wsi.ReportParser;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -12,7 +12,7 @@ public class UtilTest {
     @Test
     public void testGetReportLocation() throws Exception {
         String configFile = getLocation("/config/config.xml");
-        String location = Util.getReportLocation(Paths.get(configFile));
+        String location = Util.getReportLocationFromConfigFile(Paths.get(configFile));
         assertEquals("target/report.xml", location);
     }
 
