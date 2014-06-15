@@ -3,7 +3,8 @@ package dk.pfrandsen.check;
 import com.fasterxml.jackson.jr.ob.JSON;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
@@ -11,6 +12,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SerializationTest {
+
+    private static String getLocation(String dataFile) throws URISyntaxException {
+        return SerializationTest.class.getResource(dataFile).toURI().getPath();
+    }
 
     @Test
     public void testSerialize() throws IOException {
@@ -84,10 +89,6 @@ public class SerializationTest {
         assertEquals("Message", info.getMessage());
         assertEquals(AnalysisInformationCollector.SEVERITY_LEVEL_MINOR, info.getSeverity());
         assertEquals("dtl", info.getDetails());
-    }
-
-    private static String getLocation(String dataFile) throws URISyntaxException {
-        return SerializationTest.class.getResource(dataFile).toURI().getPath();
     }
 
 }

@@ -41,19 +41,12 @@ public class WsiBasicProfileCheckerTest {
             assertTrue(bindings.size() > 0);
             String binding = bindings.get(0).getQName().getLocalPart();
             String namespace = bindings.get(0).getQName().getNamespaceURI();
-            //String template = Util.getWsiTemplate("wsi_binding_config_template.xml");
-            // Path toolsRoot = WsiBasicProfileChecker.getDefaultWsiTestToolsRoot();
-            //WsiBasicProfileChecker.WsiProfile profile = WsiBasicProfileChecker.getDefaultWsiProfile();
-
             String templateFilename = "wsi_binding_config_template.xml";
             Path profile = BasicProfileConfig.appendProfile(toolsRoot,
                     WsiProfile.BASIC_PROFILE_11_SOAP_10.getAssertionFilename());
             Path stylesheet = BasicProfileConfig.appendDefaultStylesheet(toolsRoot);
-            BasicProfileConfig.generateBindingConfigFile(templateFilename, config, report, url, toolsRoot, profile,
+            BasicProfileConfig.generateBindingConfigFile(templateFilename, config, report, url, profile,
                     binding, namespace, true, stylesheet, "description");
-
-            // WsiBasicProfileChecker.generateBindingConfigFile(template, config, report, url, toolsRoot, profile,
-            //        binding, namespace, true);
             WsiBasicProfileChecker.checkWsiBasicProfile(config, report, toolsRoot, collector);
             assertEquals(0, collector.errorCount());
             assertEquals(0, collector.warningCount());
@@ -79,20 +72,12 @@ public class WsiBasicProfileCheckerTest {
             assertTrue(bindings.size() > bindingIndex);
             String binding = bindings.get(bindingIndex).getQName().getLocalPart();
             String namespace = bindings.get(bindingIndex).getQName().getNamespaceURI();
-            //String template = Util.getWsiTemplate("wsi_binding_config_template.xml");
-            //Path toolsRoot = WsiBasicProfileChecker.getDefaultWsiTestToolsRoot();
-            //WsiBasicProfileChecker.WsiProfile profile = WsiBasicProfileChecker.getDefaultWsiProfile();
-
             String templateFilename = "wsi_binding_config_template.xml";
-            //Path profile = BasicProfileConfig.appendProfile(toolsRoot, templateFilename);
             Path profile = BasicProfileConfig.appendProfile(toolsRoot,
                     WsiProfile.BASIC_PROFILE_11_SOAP_10.getAssertionFilename());
             Path stylesheet = BasicProfileConfig.appendDefaultStylesheet(toolsRoot);
-            BasicProfileConfig.generateBindingConfigFile(templateFilename, config, report, url, toolsRoot, profile,
+            BasicProfileConfig.generateBindingConfigFile(templateFilename, config, report, url, profile,
                     binding, namespace, true, stylesheet, "description");
-
-            //WsiBasicProfileChecker.generateBindingConfigFile(template, config, report, url, toolsRoot, profile,
-            //        binding, namespace, true);
             WsiBasicProfileChecker.checkWsiBasicProfile(config, report, toolsRoot, collector);
             assertEquals(error, collector.errorCount());
             assertEquals(warning, collector.warningCount());

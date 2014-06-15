@@ -2,15 +2,16 @@ package dk.pfrandsen;
 
 import com.fasterxml.jackson.jr.ob.JSON;
 import dk.pfrandsen.check.AnalysisInformationCollector;
-import dk.pfrandsen.wsdl.*;
+import dk.pfrandsen.wsdl.Util;
 import dk.pfrandsen.wsdl.wsi.WsiBasicProfileChecker;
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-// TODO: Add options for specifying WS-I tools root and location of report stylesheet file
 
 public class AnalyzeWsdl extends CommandLineTool {
     public static String ASSERTION_ID = "WS-I WSDL validation runner";
@@ -20,17 +21,31 @@ public class AnalyzeWsdl extends CommandLineTool {
     static private String USAGE = "Usage: java -jar <jar-file> " + arg(Runner.OPTION_ANALYZE) + " "
             + arg(OPTION_ROOT) + " <file> " + arg(OPTION_CONFIG) + " <file> " + " [" + arg(OPTION_SUMMARY) + " <file>]";
 
+    public static void main(String[] args) {
+        System.out.println("Running.");
+        AnalyzeWsdl tool = new AnalyzeWsdl();
+        CommandLine cmd;
+        try {
+            cmd = tool.parseCommandLine(args);
+        } catch (ParseException e) {
+            tool.printHelp();
+            return;
+        }
+        boolean success = tool.run(cmd);
+        System.out.println(tool.getStatusMessage(success));
+    }
+
     @Override
-    protected String getUsageString() {
+    public String getUsageString() {
         return USAGE;
     }
 
     @Override
-    protected String getToolDescription() {
+    public String getToolDescription() {
         return "Tool for analyzing WSDL for WS-I compliance.";
     }
 
-    protected Options getCommandlineOptions() {
+    public Options getCommandlineOptions() {
         Options options = new Options();
         Option help = new Option(Runner.OPTION_HELP, USAGE);
         Option root = new Option(OPTION_ROOT, true, "WS-I tools root folder (containing schemas, stylesheets etc.)");
@@ -48,7 +63,7 @@ public class AnalyzeWsdl extends CommandLineTool {
     }
 
     @Override
-    protected boolean run(CommandLine cmd) {
+    public boolean run(CommandLine cmd) {
         Path rootFolder = Paths.get(cmd.getOptionValue(OPTION_ROOT)).toAbsolutePath();
         Path configFile = Paths.get(cmd.getOptionValue(OPTION_CONFIG));
         AnalysisInformationCollector collector = new AnalysisInformationCollector();
@@ -60,9 +75,14 @@ public class AnalyzeWsdl extends CommandLineTool {
         }
     }
 
+    @Override
+    public String getStatusMessage(boolean runStatus) {
+        return "WSDL analysis completed with status: " + (runStatus ? "SUCCESS" : "FAILURE");
+    }
+
     public boolean analyzeWsdl(Path rootFolder, Path configFile, AnalysisInformationCollector collector) {
         try {
-            Path reportFile = Paths.get(Util.getReportLocationFromConfigFile((configFile))); // .toAbsolutePath();
+            Path reportFile = Paths.get(Util.getReportLocationFromConfigFile((configFile)));
             System.out.println("Report file: " + reportFile);
             System.out.println("Report file: " + reportFile.toAbsolutePath());
             System.out.println("Analyzing wsdl...");
@@ -88,20 +108,6 @@ public class AnalyzeWsdl extends CommandLineTool {
             return false;
         }
         return analysisStatus;
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Running.");
-        AnalyzeWsdl tool = new AnalyzeWsdl();
-        CommandLine cmd;
-        try {
-            cmd = tool.parseCommandLine(args);
-        } catch (ParseException e) {
-            tool.printHelp();
-            return;
-        }
-        boolean success = tool.run(cmd);
-        System.out.println("WSDL analysis completed with status: " + (success ? "SUCCESS" : "FAILURE"));
     }
 
 }

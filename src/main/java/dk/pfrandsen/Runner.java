@@ -2,8 +2,6 @@ package dk.pfrandsen;
 
 import org.apache.commons.cli.*;
 
-import java.util.*;
-
 public class Runner {
     public static String OPTION_ANALYZE = "analyze";
     public static String OPTION_CONFIG_FILE = "generateConfig";
@@ -30,6 +28,19 @@ public class Runner {
         return options;
     }
 
+    static CommandLineTool getTool(CommandLine cmd) {
+        if (cmd.hasOption(OPTION_ANALYZE)) {
+            return new AnalyzeWsdl();
+        }
+        if (cmd.hasOption(OPTION_CONFIG_FILE)) {
+            return new GenerateConfigFile();
+        }
+        if (cmd.hasOption(OPTION_UNPACK)) {
+            return new UnpackTool();
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         CommandLineParser parser = new GnuParser(); // replace with BasicParser when Apache commons-cli is released
         CommandLine cmd;
@@ -43,63 +54,26 @@ public class Runner {
             return;
         }
 
-        List<String> toolOptions = Arrays.asList(OPTION_ANALYZE, OPTION_CONFIG_FILE, OPTION_UNPACK);
+        CommandLineTool tool = getTool(cmd);
+        if (null == tool) {
+            System.out.println("Required option -" + OPTION_ANALYZE + " or -" + OPTION_CONFIG_FILE + " or -"
+                    + OPTION_UNPACK + " not provided");
+            printHelp();
+            return;
+        }
         if (cmd.hasOption(OPTION_HELP)) {
-            for (String tool : toolOptions) {
-                // get instance
-                // call help method
-            }
+            tool.printHelp();
+            return;
         }
-/*            Map<String, Class<?>> tools = new HashMap<>();
-        //tools.put(OPTION_ANALYZE, AnalyzeWsdl.class);
-        //tools.put(OPTION_CONFIG_FILE, GenerateConfigFile.class);
-        tools.put(OPTION_UNPACK, UnpackTool.class);
-        CommandLineTool t = null;
-        for (Map.Entry<String, Class<?>> toolEntry : tools.entrySet()) {
-            if (cmd.hasOption(toolEntry.getKey())) {
-                try {
-                    t = (CommandLineTool)toolEntry.getValue().newInstance();
-                } catch (Exception e) {
-                    System.out.println("Exception " + e.getMessage());
-                }
-            }
-        }
-        if (t != null) {
-            if (cmd.hasOption(OPTION_HELP)) {
-                ((CommandLineTool)t).printHelp();
-            }
-        } else {
-            System.out.println("Required option -" + OPTION_ANALYZE + " or -" + OPTION_CONFIG_FILE + " or -"
-                    + OPTION_UNPACK + " not provided");
-            printHelp();
-        } */
 
-        if (cmd.hasOption(OPTION_ANALYZE)) {
-            if (cmd.hasOption(OPTION_HELP)) {
-                AnalyzeWsdl tool = new AnalyzeWsdl();
-                tool.printHelp();
-            } else {
-                AnalyzeWsdl.main(args);
-            }
-        } else if (cmd.hasOption(OPTION_CONFIG_FILE)) {
-            if (cmd.hasOption(OPTION_HELP)) {
-                GenerateConfigFile tool = new GenerateConfigFile();
-                tool.printHelp();
-            } else {
-                GenerateConfigFile.main(args);
-            }
-        } else if (cmd.hasOption(OPTION_UNPACK)) {
-            if (cmd.hasOption(OPTION_HELP)) {
-                UnpackTool tool = new UnpackTool();
-                tool.printHelp();
-            } else {
-                UnpackTool.main(args);
-            }
-        } else {
-            System.out.println("Required option -" + OPTION_ANALYZE + " or -" + OPTION_CONFIG_FILE + " or -"
-                    + OPTION_UNPACK + " not provided");
-            printHelp();
+        try {
+            cmd = tool.parseCommandLine(args);
+        } catch (ParseException e) {
+            tool.printHelp();
+            return;
         }
+        boolean success = tool.run(cmd);
+        System.out.println(tool.getStatusMessage(success));
     }
 
 }

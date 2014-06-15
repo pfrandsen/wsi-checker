@@ -38,7 +38,7 @@ public class WsiBasicProfileChecker {
                     String description = "<not found>";
                     try {
                         description = Util.getDescriptionFromConfigFile(configFile);
-                    } catch (Exception e)  {
+                    } catch (Exception e) {
                         // ignore
                     }
                     collector.addError(ASSERTION_ID, "Validation failed",

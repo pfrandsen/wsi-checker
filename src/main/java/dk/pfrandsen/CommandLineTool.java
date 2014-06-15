@@ -6,6 +6,10 @@ public abstract class CommandLineTool {
 
     String errorMessage = "";
 
+    protected static String arg(String argument) {
+        return "-" + argument;
+    }
+
     public void printHelp() {
         System.out.println();
         System.out.println(getToolDescription());
@@ -27,13 +31,14 @@ public abstract class CommandLineTool {
         this.errorMessage = errorMessage;
     }
 
-    protected static String arg(String argument) {
-        return "-" + argument;
-    }
+    public abstract String getUsageString();
 
-    protected abstract String getUsageString();
-    protected abstract String getToolDescription();
-    protected abstract Options getCommandlineOptions();
-    protected abstract boolean run(CommandLine cmd);
+    public abstract String getToolDescription();
+
+    public abstract Options getCommandlineOptions();
+
+    public abstract boolean run(CommandLine cmd);
+
+    public abstract String getStatusMessage(boolean runStatus);
 
 }

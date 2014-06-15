@@ -1,6 +1,6 @@
 package dk.pfrandsen.wsdl.wsi;
 
-import dk.pfrandsen.wsdl.Util;
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +16,14 @@ import static org.junit.Assert.*;
 
 public class BasicProfileConfigTest {
     private Path outputPath;
+
+    private static String getLocation(String wsdlFile) throws URISyntaxException {
+        return BasicProfileConfigTest.class.getResource(wsdlFile).toURI().getPath();
+    }
+
+    private static String readFile(Path path) throws IOException {
+        return new String(Files.readAllBytes(path));
+    }
 
     @Before
     public void setUp() {
@@ -45,7 +53,6 @@ public class BasicProfileConfigTest {
         String stylesheetName = "stylesheet.xsl";
         Path relPath = Paths.get("common", "xsl", stylesheetName);
         String expected = Paths.get(System.getProperty("user.dir")).resolve(root).resolve(relPath).toUri().toString();
-
         Path stylesheet = BasicProfileConfig.appendStylesheet(root, stylesheetName);
         assertEquals(expected, stylesheet.toUri().toString());
     }
@@ -56,14 +63,13 @@ public class BasicProfileConfigTest {
         String testAssertionDocument = "TAD.xml";
         Path relPath = Paths.get("common", "profiles", testAssertionDocument);
         String expected = Paths.get(System.getProperty("user.dir")).resolve(root).resolve(relPath).toUri().toString();
-
         Path stylesheet = BasicProfileConfig.appendProfile(root, testAssertionDocument);
         assertEquals(expected, stylesheet.toUri().toString());
     }
 
     @Test
     public void testProfileFilename() {
-        assertEquals("BasicProfile_1.1_TAD.xml", BasicProfileConfig.profileFilename("BASIC_PROFILE_11"));
+        assertEquals("BasicProfile_1.1_TAD.xml", BasicProfileConfig.profileTemplateFilename("BASIC_PROFILE_11"));
     }
 
     @Test
@@ -79,7 +85,7 @@ public class BasicProfileConfigTest {
     public void testInvalidTemplateName() throws IOException {
         Path config = outputPath.resolve("config.xml");
         boolean success = BasicProfileConfig.generateBindingConfigFile("invalid-template", config,
-                outputPath.resolve("report.xml"), "url", Paths.get("tool-root"), Paths.get("profile.xml"), "binding",
+                outputPath.resolve("report.xml"), "url", Paths.get("profile.xml"), "binding",
                 "namespace", true, Paths.get("stylesheet.xsl"), "description");
         assertFalse(success);
         assertFalse(outputPath.toFile().exists());
@@ -89,12 +95,18 @@ public class BasicProfileConfigTest {
     public void testValidTemplateName() throws IOException {
         Path config = outputPath.resolve("config.xml");
         boolean success = BasicProfileConfig.generateBindingConfigFile("wsi_binding_config_template.xml", config,
-                outputPath.resolve("report.xml"), "url", Paths.get("tool-root"), Paths.get("profile.xml"), "binding",
+                outputPath.resolve("report.xml"), "url", Paths.get("profile.xml"), "binding",
                 "namespace", true, Paths.get("stylesheet.xsl"), "description");
         assertTrue(success);
         assertTrue(outputPath.toFile().exists());
         assertTrue(config.toFile().exists());
-        // TODO: check content of file
+        String contents = FileUtils.readFileToString(config.toFile(), "UTF-8");
+        assertTrue(contents.contains("<analyze:description>description</analyze:description>"));
+        assertTrue(contents.contains("location=\"" + outputPath.resolve("report.xml") + "\""));
+        assertTrue(contents.contains("<analyze:testAssertionsFile>profile.xml</analyze:testAssertionsFile>"));
+        assertTrue(contents.contains("<analyze:wsdlElement type=\"binding\""));
+        assertTrue(contents.contains("namespace=\"namespace\">binding</analyze:wsdlElement>"));
+        assertTrue(contents.contains("<analyze:wsdlURI>url</analyze:wsdlURI>"));
     }
 
     @Test
@@ -102,14 +114,6 @@ public class BasicProfileConfigTest {
         String text = "<analyze:wsdlElement type=\"binding\" namespace=\"%NAMESPACE%\">%BINDING%</analyze:wsdlElement>";
         String template = BasicProfileConfig.getTemplateContent("wsi_binding_config_template.xml");
         assertTrue("Template should contain wsdlElement with type binding", template.contains(text));
-    }
-
-    private static String getLocation(String wsdlFile) throws URISyntaxException {
-        return BasicProfileConfigTest.class.getResource(wsdlFile).toURI().getPath();
-    }
-
-    private static String readFile(Path path) throws IOException {
-        return new String(Files.readAllBytes(path));
     }
 
     @Test
@@ -120,11 +124,9 @@ public class BasicProfileConfigTest {
         String binding = "EntityBinding";
         try {
             String url = getLocation("/wsdl/wsdl_1.wsdl");
-            // String template = Util.getWsiTemplate("wsi_binding_config_template.xml");
             String templateFilename = "wsi_binding_config_template.xml";
-            BasicProfileConfig.generateBindingConfigFile(templateFilename, config, report, url, Paths.get("tools-root"),
+            BasicProfileConfig.generateBindingConfigFile(templateFilename, config, report, url,
                     Paths.get("profile.xml"), binding, namespace, true, Paths.get("styles.xsl"), "description");
-            // WsiBasicProfileChecker.generateBindingConfigFile(template, config, report, url, binding, namespace, true);
             String configContent = readFile(config);
             assertTrue("Verbose should be true", configContent.contains("<analyze:verbose>true</analyze:verbose>"));
             assertTrue("Report file location should be '" + report.toString() + "'",
@@ -140,6 +142,5 @@ public class BasicProfileConfigTest {
             Files.delete(report);
         }
     }
-
 
 }

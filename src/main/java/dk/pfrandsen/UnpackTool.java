@@ -1,6 +1,10 @@
 package dk.pfrandsen;
 
-import org.apache.commons.cli.*;
+import dk.pfrandsen.wsdl.Util;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,21 +17,34 @@ import java.util.zip.ZipInputStream;
 
 public class UnpackTool extends CommandLineTool {
     static private String OPTION_ROOT = "root";
-    static private String OPTION_ROOT_SHORT = "r";
     static private String USAGE = "Usage: java -jar <jar-file> " + arg(Runner.OPTION_UNPACK) + " " + arg(OPTION_ROOT)
             + " <folder> ";
 
+    public static void main(String[] args) {
+        UnpackTool tool = new UnpackTool();
+        CommandLine cmd;
+        try {
+            cmd = tool.parseCommandLine(args);
+        } catch (ParseException e) {
+            tool.printHelp();
+            return;
+        }
+        boolean success = tool.run(cmd);
+        System.out.println(tool.getStatusMessage(success));
+    }
+
     @Override
-    protected String getUsageString() {
+    public String getUsageString() {
         return USAGE;
     }
 
     @Override
-    protected String getToolDescription() {
+    public String getToolDescription() {
         return "Tool for extraction WS-I tool files (schemas etc. needed during WSDL analysis).";
     }
 
-    protected Options getCommandlineOptions() {
+    public Options getCommandlineOptions() {
+        String OPTION_ROOT_SHORT = "r";
         Options options = new Options();
         Option help = new Option(Runner.OPTION_HELP, USAGE);
 
@@ -41,9 +58,14 @@ public class UnpackTool extends CommandLineTool {
     }
 
     @Override
-    protected boolean run(CommandLine cmd) {
+    public boolean run(CommandLine cmd) {
         Path rootFolder = Paths.get(cmd.getOptionValue(OPTION_ROOT));
         return extractTool(rootFolder);
+    }
+
+    @Override
+    public String getStatusMessage(boolean runStatus) {
+        return "Tool unpack completed with status: " + (runStatus ? "SUCCESS" : "FAILURE");
     }
 
     public boolean extractTool(Path rootFolder) {
@@ -57,7 +79,7 @@ public class UnpackTool extends CommandLineTool {
                 String fileName = entry.getName();
                 if (entry.isDirectory()) {
                     Path folder = rootFolder.resolve(fileName);
-                    folder.toFile().mkdirs();
+                    Util.mkDirs(folder);
                 } else {
                     File f = rootFolder.resolve(fileName).toFile();
                     FileOutputStream outputStream = new FileOutputStream(f);
@@ -75,19 +97,6 @@ public class UnpackTool extends CommandLineTool {
             System.out.println("Exception " + e.getMessage());
         }
         return retVal;
-    }
-
-    public static void main(String[] args) {
-        UnpackTool tool = new UnpackTool();
-        CommandLine cmd;
-        try {
-            cmd = tool.parseCommandLine(args);
-        } catch (ParseException e) {
-            tool.printHelp();
-            return;
-        }
-        boolean success = tool.run(cmd);
-        System.out.println("Tool unpack completed with status: " + (success ? "SUCCESS" : "FAILURE"));
     }
 
 }

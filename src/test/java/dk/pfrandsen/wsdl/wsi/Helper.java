@@ -14,12 +14,19 @@ public class Helper {
 
     static void deleteRecursive(File file) {
         if (file.isDirectory()) {
-            for (File f : file.listFiles()) {
-                deleteRecursive(f);
+            File[] files = file.listFiles();
+            if (files != null) {
+                for (File f : files) {
+                    deleteRecursive(f);
+                }
+                if (!file.delete()) {
+                    System.out.println("Could not delete folder " + file);
+                }
             }
-            file.delete();
         } else {
-            file.delete();
+            if (!file.delete()) {
+                System.out.println("Could not delete file " + file);
+            }
         }
     }
 

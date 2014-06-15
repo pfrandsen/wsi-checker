@@ -2,12 +2,10 @@ package dk.pfrandsen.wsdl;
 
 import com.ibm.wsdl.Constants;
 import com.ibm.wsdl.factory.WSDLFactoryImpl;
-import com.sun.istack.internal.NotNull;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import javax.wsdl.Binding;
 import javax.wsdl.Definition;
@@ -16,11 +14,12 @@ import javax.wsdl.WSDLException;
 import javax.wsdl.xml.WSDLReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -38,11 +37,10 @@ public class Util {
     }
 
     public static List<Binding> getBindings(Definition definition) {
-        List<Binding> result = new ArrayList<Binding>();
+        List<Binding> result = new ArrayList<>();
         Map bindings = definition.getBindings();
-        Iterator iterator = bindings.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry entry = (Map.Entry) iterator.next();
+        for (Object item : bindings.entrySet()) {
+            Map.Entry entry = (Map.Entry) item;
             if (entry.getValue() instanceof Binding) {
                 result.add((Binding) entry.getValue());
             }
@@ -51,11 +49,10 @@ public class Util {
     }
 
     public static List<Service> getServices(Definition definition) {
-        List<Service> result = new ArrayList<Service>();
+        List<Service> result = new ArrayList<>();
         Map services = definition.getServices();
-        Iterator iterator = services.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry entry = (Map.Entry) iterator.next();
+        for (Object item : services.entrySet()) {
+            Map.Entry entry = (Map.Entry) item;
             if (entry.getValue() instanceof Service) {
                 result.add((Service) entry.getValue());
             }
@@ -67,14 +64,11 @@ public class Util {
         String separator = System.getProperty("line.separator");
         StringBuilder template = new StringBuilder();
         InputStream stream = Util.class.getResourceAsStream("/wsi/" + templateName);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-        try {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 template.append(line).append(separator);
             }
-        } finally {
-            reader.close();
         }
         return template.toString();
     }
@@ -82,7 +76,7 @@ public class Util {
     public static String getReportLocationFromConfigFile(Path configFile) throws Exception {
         Element element = item(getConfigFileElementsByTagName(configFile, "reportFile"), 0);
         if (element != null) {
-            return  ("" + element.getAttribute("location")).trim();
+            return ("" + element.getAttribute("location")).trim();
         }
         return "";
     }
@@ -90,12 +84,12 @@ public class Util {
     public static String getDescriptionFromConfigFile(Path configFile) throws Exception {
         Element element = item(getConfigFileElementsByTagName(configFile, "description"), 0);
         if (element != null) {
-            return  ("" + element.getTextContent()).trim();
+            return ("" + element.getTextContent()).trim();
         }
         return "";
     }
 
-    private static NodeList getConfigFileElementsByTagName(Path configFile, String tagName) throws Exception{
+    private static NodeList getConfigFileElementsByTagName(Path configFile, String tagName) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);  // Important!!!
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -108,7 +102,7 @@ public class Util {
             if (nodeList != null && nodeList.getLength() > index) {
                 Node node = nodeList.item(index);
                 if (node instanceof Element) {
-                    return (Element)node;
+                    return (Element) node;
                 }
             }
         }
@@ -125,4 +119,11 @@ public class Util {
         return builder.toString();
     }
 
+    public static void mkDirs(Path folder) {
+        if (!folder.toFile().exists()) {
+            if (!folder.toFile().mkdirs()) {
+                System.out.println("Could not create: " + folder.toString());
+            }
+        }
+    }
 }

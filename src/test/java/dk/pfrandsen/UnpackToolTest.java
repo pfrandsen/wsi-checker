@@ -6,7 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,12 +21,10 @@ public class UnpackToolTest {
     @Before
     public void setUp() {
         outputPath = Paths.get("target", "unpack");
-        //deleteFolder(outputPath);
     }
 
     @After
     public void cleanUp() {
-        //deleteFolder(outputPath);
         if (outputPath.toString().startsWith("target")) {
             Helper.deleteFolder(outputPath);
         }
@@ -65,24 +62,6 @@ public class UnpackToolTest {
         UnpackTool tool = new UnpackTool();
         assertTrue("Running the unpack tool extractTool returned false", tool.extractTool(outputPath));
         checkExtract(outputPath);
-    }
-
-    private void deleteFolder(Path folder) {
-        if (folder.toFile().exists() && folder.toFile().isDirectory()) {
-            System.out.println("deleting " + folder.toAbsolutePath());
-            deleteRecursive(folder.toFile());
-        }
-    }
-
-    private void deleteRecursive(File file) {
-        if (file.isDirectory()) {
-            for (File f : file.listFiles()) {
-                deleteRecursive(f);
-            }
-            file.delete();
-        } else {
-            file.delete();
-        }
     }
 
     private String sha1(Path file) throws IOException {

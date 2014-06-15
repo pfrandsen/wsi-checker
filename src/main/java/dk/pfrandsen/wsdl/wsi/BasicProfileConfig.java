@@ -71,11 +71,10 @@ public class BasicProfileConfig {
     }
 
     /**
-     *
      * @param profileName WsiProfile name
      * @return the filename from the WsiProfile enum or empty string if not found
      */
-    public static String profileFilename(String profileName) { // TODO: rename to templateFilename?
+    public static String profileTemplateFilename(String profileName) {
         for (WsiProfile p : WsiProfile.values()) {
             if (p.name().equals(profileName)) {
                 return p.getAssertionFilename();
@@ -85,7 +84,6 @@ public class BasicProfileConfig {
     }
 
     /**
-     *
      * @param profileName WsiProfile name
      * @return the description from the WsiProfile enum or empty string if not found
      */
@@ -99,7 +97,6 @@ public class BasicProfileConfig {
     }
 
     /**
-     *
      * @return list of template filenames included in the jar resources
      */
     public static List<String> templateFilename() {
@@ -130,9 +127,8 @@ public class BasicProfileConfig {
         return template.toString();
     }
 
-    // TODO: determine if toolsRoot should be remove from the signature
     public static boolean generateBindingConfigFile(String templateFilename, Path configFile, Path reportFile,
-                                                    String url, Path toolsRoot, Path profile, String binding,
+                                                    String url, Path profile, String binding,
                                                     String namespace, boolean verbose, Path stylesheet,
                                                     String description)
             throws IOException {
@@ -140,12 +136,21 @@ public class BasicProfileConfig {
             System.out.println("Template '" + templateFilename + "' does not exist.");
             return false;
         }
-        if (configFile.getParent() != null) {
+        String template = getTemplateContent(templateFilename);
+        return generateBindingConfigFileFromTemplate(template, configFile, reportFile, url, profile, binding,
+                namespace, verbose, stylesheet, description);
+    }
+
+    public static boolean generateBindingConfigFileFromTemplate(String template, Path configFile, Path reportFile,
+                                                                String url, Path profile, String binding,
+                                                                String namespace, boolean verbose, Path stylesheet,
+                                                                String description)
+            throws IOException {
+        if (configFile.getParent() != null && !configFile.getParent().toFile().exists()) {
             if (!configFile.getParent().toFile().mkdirs()) {
                 System.out.println("Could not create " + configFile.getParent().toString());
             }
         }
-        String template = getTemplateContent(templateFilename);
         template = template.replaceAll(DESCRIPTION, description);
         template = template.replaceAll(VERBOSE, verbose ? "true" : "false");
         template = template.replaceAll(REPORT_FILE, reportFile.toString());

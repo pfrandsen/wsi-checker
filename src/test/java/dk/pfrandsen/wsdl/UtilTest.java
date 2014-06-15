@@ -9,15 +9,15 @@ import static org.junit.Assert.assertEquals;
 
 public class UtilTest {
 
+    private static String getLocation(String configFile) throws URISyntaxException {
+        return UtilTest.class.getResource(configFile).toURI().getPath();
+    }
+
     @Test
     public void testGetReportLocation() throws Exception {
         String configFile = getLocation("/config/config.xml");
         String location = Util.getReportLocationFromConfigFile(Paths.get(configFile));
         assertEquals("target/report.xml", location);
-    }
-
-    private static String getLocation(String configFile) throws URISyntaxException {
-        return UtilTest.class.getResource(configFile).toURI().getPath();
     }
 
 }

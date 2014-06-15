@@ -67,20 +67,6 @@ public class AnalysisInformation {
         return details.length() > 0;
     }
 
-    public String toJson() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("{");
-        builder.append("\"assertion\":\"" + getAssertion() + "\"");
-
-        builder.append(", \"message\":\"" + getMessage() + "\"");  // TODO: encode
-        builder.append(", \"severity\":" + getSeverity());
-        if (hasDetails()) {
-            builder.append(", \"details\":\"" + getDetails() + "\"");
-        }
-        builder.append("}");
-        return builder.toString();
-    }
-
     @Override
     public String toString() {
         return "AnalysisInformation{" +
