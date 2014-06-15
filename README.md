@@ -2,30 +2,60 @@
 
 Utility for running WS-I.org Basic Profile 1.1 validation tool
 
+The tool also include options to:
+
+* Generate the configuration file that the WS-I.org Basic Profile 1.1 validation tool require as input
+* Extract the files (schemas etc) that the WS-I.org Basic Profile 1.1 validation tool need access to during execution
+
 ## Build/test
+
+To build stand alone jar: mvn package
+
+To get help for the tools included in the standalone jar:
+
+* WSDL analyzer: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -help -analyze
+* Configuration file generator: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -help -generateConfig
+* WS-I tool extractor: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -help -unpackTool
+
+### Quick test run
+
+Note: Requires Python and Google Chrome installed
+
+cd scripts
+./testrun.sh
+
+These commands will build the stand alone jar, extract the WS-I tool files, generate a config file, run the
+analyzer, start a local web server, and open a browser to display the generated report.
+
+Run the following command to get the process id of the web server: ps | grep python
 
 ### Tool to analyze wsdl
 
-* To build stand alone jar: mvn package
-* Run: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -config file  [-summary file]
+* Help: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -help -analyze
+* Run: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -analyze -config file -root folder [-summary file]
 
 Examples:
 
-* java -jar target/wsi-checker-1.0-SNAPSHOT.jar -config target/config.xml
-* java -jar target/wsi-checker-1.0-SNAPSHOT.jar -config target/config.xml -summary target/summary.json
-
+* java -jar target/wsi-checker-1.0-SNAPSHOT.jar -analyze -config target/config.xml -root target/wsi-root
+* java -jar target/wsi-checker-1.0-SNAPSHOT.jar -analyze -config target/config.xml -root target/wsi-root
+ -summary target/summary.json
 
 ### Tool to generate wsi configuration file
 
-* To build stand alone jar: mvn -Pconfig package
-* Run: java -jar target/config-generator.jar -wsdl file -report file -output file
-* Run: java -jar target/config-generator.jar -wsdl file -report file -output file -binding index
+* Help: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -help -generateConfig
+* Run: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -generateConfig -root folder -wsdl file -report file -output file
 
-Example: java -jar target/config-generator.jar -wsdl src/test/resources/wsdl/wsdl_1.wsdl -report target/report.xml
- -output target/config.xml
+See help for additional options
 
-Default is to use the first binding in the wsdl. If the wsdl has more than one binding, add the -binding option to
-generate config file for a specific binding.
+Example: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -generateConfig -root target/wsi-root
+ -wsdl src/test/resources/wsdl/wsdl_1.wsdl -report target/report.xml -output target/config.xml
+
+### Tool to extract WS-I tool support files
+
+* Help: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -help -unpackTool
+* Run: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -unpackTool -root folder
+
+Example: java -jar target/wsi-checker-1.0-SNAPSHOT.jar -unpackTool -root target/wsi-root
 
 ## Content
 
@@ -52,7 +82,7 @@ alone (executable) jars.
 ``` java
     public runner() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("java", "-jar", "target/wsi-checker-1.0-SNAPSHOT.jar",
-                "-config", "target/config.xml", "-summary", "target/summary.json");
+            "-analyze", "-root", "target/wsi-root", "-config", "target/config.xml", "-summary", "target/summary.json");
         Process process = builder.start();
         InputStream fromProcess = process.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(fromProcess));
