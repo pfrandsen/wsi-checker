@@ -26,13 +26,15 @@ cd scripts
 ./testrun.sh
 ```
 
-These commands will
+The testrun.sh shell script will
 * build the stand alone jar
-* extract the WS-I tool files
-* generate a config file
-* run the analyzer
+* run the command/tool in the jar to extract the WS-I tool files
+* run the command/tool in the jar to generate a config file
+* run the command/tool in the jar to run the analyzer
 * start a local web server
 * and open a browser to display the generated report
+
+All the files generated are located in target/testrun
 
 Run the following command to get the process id of the web server: ps | grep python
 
