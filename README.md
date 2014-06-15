@@ -19,13 +19,20 @@ To get help for the tools included in the standalone jar:
 
 ### Quick test run
 
-Note: Requires Python and Google Chrome installed
+Note: Requires that Python (2.x or 3.x) and the Google Chrome browser are installed.
 
+```shell
 cd scripts
 ./testrun.sh
+```
 
-These commands will build the stand alone jar, extract the WS-I tool files, generate a config file, run the
-analyzer, start a local web server, and open a browser to display the generated report.
+These commands will
+* build the stand alone jar
+* extract the WS-I tool files
+* generate a config file
+* run the analyzer
+* start a local web server
+* and open a browser to display the generated report
 
 Run the following command to get the process id of the web server: ps | grep python
 
