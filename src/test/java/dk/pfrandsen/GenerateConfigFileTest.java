@@ -45,7 +45,7 @@ public class GenerateConfigFileTest {
         WsiProfile profile = WsiProfile.BASIC_PROFILE_11_SOAP_10;
         String assertionFile = profile.getAssertionFilename();
         String[] args = {arg(Runner.OPTION_CONFIG_FILE),
-                arg(GenerateConfigFile.OPTION_ROOT), toolsRoot.toString(),
+                arg(Runner.OPTION_ROOT), toolsRoot.toString(),
                 arg(GenerateConfigFile.OPTION_OUTPUT), output.toString(),
                 arg(GenerateConfigFile.OPTION_WSDL), wsdl.toString(),
                 arg(GenerateConfigFile.OPTION_REPORT), report.toString()};
@@ -66,7 +66,7 @@ public class GenerateConfigFileTest {
     public void testProfileName() throws IOException {
         WsiProfile profile = WsiProfile.BASIC_PROFILE_11;
         String[] args = {arg(Runner.OPTION_CONFIG_FILE),
-                arg(GenerateConfigFile.OPTION_ROOT), toolsRoot.toString(),
+                arg(Runner.OPTION_ROOT), toolsRoot.toString(),
                 arg(GenerateConfigFile.OPTION_OUTPUT), output.toString(),
                 arg(GenerateConfigFile.OPTION_WSDL), wsdl.toString(),
                 arg(GenerateConfigFile.OPTION_REPORT), report.toString(),
@@ -83,7 +83,7 @@ public class GenerateConfigFileTest {
     @Test
     public void testBinding() throws IOException {
         String[] args = {arg(Runner.OPTION_CONFIG_FILE),
-                arg(GenerateConfigFile.OPTION_ROOT), toolsRoot.toString(),
+                arg(Runner.OPTION_ROOT), toolsRoot.toString(),
                 arg(GenerateConfigFile.OPTION_OUTPUT), output.toString(),
                 arg(GenerateConfigFile.OPTION_WSDL), wsdl.toString(),
                 arg(GenerateConfigFile.OPTION_REPORT), report.toString(),
@@ -98,7 +98,7 @@ public class GenerateConfigFileTest {
     @Test
     public void testInvalidBinding() throws IOException, ParseException {
         String[] args = {arg(Runner.OPTION_CONFIG_FILE),
-                arg(GenerateConfigFile.OPTION_ROOT), toolsRoot.toString(),
+                arg(Runner.OPTION_ROOT), toolsRoot.toString(),
                 arg(GenerateConfigFile.OPTION_OUTPUT), output.toString(),
                 arg(GenerateConfigFile.OPTION_WSDL), wsdl.toString(),
                 arg(GenerateConfigFile.OPTION_REPORT), report.toString(),
@@ -115,7 +115,7 @@ public class GenerateConfigFileTest {
         WsiProfile profile = WsiProfile.BASIC_PROFILE_11_SOAP_10;
         Path template = Paths.get("target", "test-classes", "wsi", "custom_binding_template.xml");
         String[] args = {arg(Runner.OPTION_CONFIG_FILE),
-                arg(GenerateConfigFile.OPTION_ROOT), toolsRoot.toString(),
+                arg(Runner.OPTION_ROOT), toolsRoot.toString(),
                 arg(GenerateConfigFile.OPTION_OUTPUT), output.toString(),
                 arg(GenerateConfigFile.OPTION_WSDL), wsdl.toString(),
                 arg(GenerateConfigFile.OPTION_REPORT), report.toString(),
@@ -130,7 +130,7 @@ public class GenerateConfigFileTest {
     public void testCustomTestAssertionFile() throws IOException {
         String assertions = "assertions_file.xml";
         String[] args = {arg(Runner.OPTION_CONFIG_FILE),
-                arg(GenerateConfigFile.OPTION_ROOT), toolsRoot.toString(),
+                arg(Runner.OPTION_ROOT), toolsRoot.toString(),
                 arg(GenerateConfigFile.OPTION_OUTPUT), output.toString(),
                 arg(GenerateConfigFile.OPTION_WSDL), wsdl.toString(),
                 arg(GenerateConfigFile.OPTION_REPORT), report.toString(),
@@ -146,7 +146,7 @@ public class GenerateConfigFileTest {
     public void testStylesheetArg() throws ParseException, IOException {
         String stylesheet = "custom_stylesheet.xsl";
         String[] args = {arg(Runner.OPTION_CONFIG_FILE),
-                arg(GenerateConfigFile.OPTION_ROOT), toolsRoot.toString(),
+                arg(Runner.OPTION_ROOT), toolsRoot.toString(),
                 arg(GenerateConfigFile.OPTION_OUTPUT), output.toString(),
                 arg(GenerateConfigFile.OPTION_WSDL), wsdl.toString(),
                 arg(GenerateConfigFile.OPTION_REPORT), report.toString(),

@@ -15,11 +15,10 @@ import java.nio.file.Paths;
 
 public class AnalyzeWsdl extends CommandLineTool {
     public static String ASSERTION_ID = "WS-I WSDL validation runner";
-    private static String OPTION_ROOT = "root";
-    static private String OPTION_CONFIG = "config";
-    static private String OPTION_SUMMARY = "summary";
+    public static String OPTION_CONFIG = "config";
+    public static String OPTION_SUMMARY = "summary";
     static private String USAGE = "Usage: java -jar <jar-file> " + arg(Runner.OPTION_ANALYZE) + " "
-            + arg(OPTION_ROOT) + " <file> " + arg(OPTION_CONFIG) + " <file> " + " [" + arg(OPTION_SUMMARY) + " <file>]";
+            + arg(Runner.OPTION_ROOT) + " <file> " + arg(OPTION_CONFIG) + " <file> " + " [" + arg(OPTION_SUMMARY) + " <file>]";
 
     public static void main(String[] args) {
         System.out.println("Running.");
@@ -48,11 +47,14 @@ public class AnalyzeWsdl extends CommandLineTool {
     public Options getCommandlineOptions() {
         Options options = new Options();
         Option help = new Option(Runner.OPTION_HELP, USAGE);
-        Option root = new Option(OPTION_ROOT, true, "WS-I tools root folder (containing schemas, stylesheets etc.)");
+        Option root = new Option(Runner.OPTION_ROOT, true, "WS-I tools root folder (containing schemas, stylesheets etc.)");
+        root.setRequired(true);
         root.setArgName("folder");
         Option config = new Option(OPTION_CONFIG, true, "location of configuration file");
+        config.setRequired(true);
         config.setArgName("file");
-        Option summary = new Option(OPTION_SUMMARY, false, "location of summary file");
+        Option summary = new Option(OPTION_SUMMARY, true, "location of summary file");
+        summary.setRequired(false);
         summary.setArgName("file");
         options.addOption(help);
         options.addOption(new Option(Runner.OPTION_ANALYZE, "option to select this tool"));
@@ -64,7 +66,7 @@ public class AnalyzeWsdl extends CommandLineTool {
 
     @Override
     public boolean run(CommandLine cmd) {
-        Path rootFolder = Paths.get(cmd.getOptionValue(OPTION_ROOT)).toAbsolutePath();
+        Path rootFolder = Paths.get(cmd.getOptionValue(Runner.OPTION_ROOT)).toAbsolutePath();
         Path configFile = Paths.get(cmd.getOptionValue(OPTION_CONFIG));
         AnalysisInformationCollector collector = new AnalysisInformationCollector();
         if (cmd.hasOption(OPTION_SUMMARY)) {

@@ -16,9 +16,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class UnpackTool extends CommandLineTool {
-    static private String OPTION_ROOT = "root";
-    static private String USAGE = "Usage: java -jar <jar-file> " + arg(Runner.OPTION_UNPACK) + " " + arg(OPTION_ROOT)
-            + " <folder> ";
+    static private String USAGE = "Usage: java -jar <jar-file> " + arg(Runner.OPTION_UNPACK) + " " +
+            arg(Runner.OPTION_ROOT) + " <folder> ";
 
     public static void main(String[] args) {
         UnpackTool tool = new UnpackTool();
@@ -44,12 +43,12 @@ public class UnpackTool extends CommandLineTool {
     }
 
     public Options getCommandlineOptions() {
-        String OPTION_ROOT_SHORT = "r";
         Options options = new Options();
         Option help = new Option(Runner.OPTION_HELP, USAGE);
 
-        Option root = new Option(OPTION_ROOT_SHORT, OPTION_ROOT, true,
+        Option root = new Option(Runner.OPTION_ROOT, true,
                 "root folder to place WS-I tool files in (will be created if it does not exist)");
+        root.setRequired(true);
         root.setArgName("folder");
         options.addOption(help);
         options.addOption(new Option(Runner.OPTION_UNPACK, "option to select this tool"));
@@ -59,7 +58,7 @@ public class UnpackTool extends CommandLineTool {
 
     @Override
     public boolean run(CommandLine cmd) {
-        Path rootFolder = Paths.get(cmd.getOptionValue(OPTION_ROOT));
+        Path rootFolder = Paths.get(cmd.getOptionValue(Runner.OPTION_ROOT));
         return extractTool(rootFolder);
     }
 

@@ -19,7 +19,6 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class GenerateConfigFile extends CommandLineTool {
-    public static String OPTION_ROOT = "root";
     public static String OPTION_WSDL = "wsdl";
     public static String OPTION_REPORT = "report";
     public static String OPTION_OUTPUT = "output";
@@ -29,7 +28,7 @@ public class GenerateConfigFile extends CommandLineTool {
     public static String OPTION_PROFILE_FILE = "profileFile";
     public static String OPTION_TEMPLATE = "template";
     public static String USAGE = "Usage: java -jar <jar-file> " + arg(Runner.OPTION_CONFIG_FILE) + " "
-            + arg(OPTION_ROOT) + " <folder> " + arg(OPTION_WSDL)
+            + arg(Runner.OPTION_ROOT) + " <folder> " + arg(OPTION_WSDL)
             + " <file> " + arg(OPTION_REPORT) + " <file> " + arg(OPTION_OUTPUT) + " <file> [" + arg(OPTION_BINDING)
             + " <index>" + arg(OPTION_STYLESHEET) + " <file> " + arg(OPTION_PROFILE_NAME) + "<profile-name>"
             + arg(OPTION_PROFILE_FILE) + " <file>" + arg(OPTION_TEMPLATE) + " <file>]";
@@ -68,7 +67,7 @@ public class GenerateConfigFile extends CommandLineTool {
     public Options getCommandlineOptions() {
         Options options = new Options();
         Option help = new Option(Runner.OPTION_HELP, USAGE);
-        Option root = new Option(OPTION_ROOT, true,
+        Option root = new Option(Runner.OPTION_ROOT, true,
                 "WS-I tools root folder (containing schemas, stylesheets etc.)");
         root.setRequired(true);
         root.setArgName("folder");
@@ -135,7 +134,7 @@ public class GenerateConfigFile extends CommandLineTool {
 
     @Override
     public boolean run(CommandLine cmd) {
-        Path root = Paths.get(cmd.getOptionValue(OPTION_ROOT));
+        Path root = Paths.get(cmd.getOptionValue(Runner.OPTION_ROOT));
         String wsdl = cmd.getOptionValue(OPTION_WSDL);
         Path output = Paths.get(cmd.getOptionValue(OPTION_OUTPUT));
         Path report = Paths.get(cmd.getOptionValue(OPTION_REPORT));

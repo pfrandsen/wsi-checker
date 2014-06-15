@@ -3,6 +3,7 @@ package dk.pfrandsen;
 import org.apache.commons.cli.*;
 
 public class Runner {
+    public static String OPTION_ROOT = "root";  // option shared by all tools
     public static String OPTION_ANALYZE = "analyze";
     public static String OPTION_CONFIG_FILE = "generateConfig";
     public static String OPTION_UNPACK = "unpackTool";
@@ -19,12 +20,36 @@ public class Runner {
         formatter.printHelp(USAGE, options);
     }
 
+    private static void addDummyOption(Options options, String opt, boolean hasArg) {
+        Option op = new Option(opt, hasArg, "");
+        if (hasArg) {
+            op.setArgName("arg");
+        }
+        options.addOption(op);
+    }
+
     private static Options getCommandlineOptions() {
         Options options = new Options();
         options.addOption(OptionBuilder.create(OPTION_HELP));
         options.addOption(OptionBuilder.create(OPTION_ANALYZE));
         options.addOption(OptionBuilder.create(OPTION_CONFIG_FILE));
         options.addOption(OptionBuilder.create(OPTION_UNPACK));
+
+        // Add options for all the "sub" tools to avoid command line parsing error
+        // shared option(s)
+        addDummyOption(options, OPTION_ROOT, true);
+        // options for analyzer tool
+        addDummyOption(options, AnalyzeWsdl.OPTION_CONFIG, true);
+        addDummyOption(options, AnalyzeWsdl.OPTION_SUMMARY, true);
+        // options for configuration file generator
+        addDummyOption(options, GenerateConfigFile.OPTION_WSDL, true);
+        addDummyOption(options, GenerateConfigFile.OPTION_REPORT, true);
+        addDummyOption(options, GenerateConfigFile.OPTION_OUTPUT, true);
+        addDummyOption(options, GenerateConfigFile.OPTION_BINDING, true);
+        addDummyOption(options, GenerateConfigFile.OPTION_STYLESHEET, true);
+        addDummyOption(options, GenerateConfigFile.OPTION_PROFILE_NAME, true);
+        addDummyOption(options, GenerateConfigFile.OPTION_PROFILE_FILE, true);
+        addDummyOption(options, GenerateConfigFile.OPTION_TEMPLATE, true);
         return options;
     }
 
@@ -50,6 +75,7 @@ public class Runner {
             cmd = parser.parse(options, args);
         } catch (ParseException exp) {
             // oops, something went wrong
+            System.out.println("parse error");
             printHelp();
             return;
         }
