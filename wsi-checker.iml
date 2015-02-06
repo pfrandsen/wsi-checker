@@ -14,11 +14,16 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" name="Maven: wsi:wsi-test-tools:1.0" level="project" />
-    <orderEntry type="library" name="Maven: wsi:wsdl4j:1.4" level="project" />
-    <orderEntry type="library" name="Maven: wsi:uddi4j:unknown" level="project" />
-    <orderEntry type="library" name="Maven: xerces:xmlParserAPIs:2.6.2" level="project" />
-    <orderEntry type="library" name="Maven: xerces:xercesImpl:2.6.2" level="project" />
+    <orderEntry type="library" name="Maven: wsi:axis:local" level="project" />
+    <orderEntry type="library" name="Maven: wsi:commons-discovery:local" level="project" />
+    <orderEntry type="library" name="Maven: wsi:commons-logging:local" level="project" />
+    <orderEntry type="library" name="Maven: wsi:jaxrpc:local" level="project" />
+    <orderEntry type="library" name="Maven: wsi:saaj:local" level="project" />
+    <orderEntry type="library" name="Maven: wsi:wsi-test-tools:local" level="project" />
+    <orderEntry type="library" name="Maven: wsi:wsdl4j:local" level="project" />
+    <orderEntry type="library" name="Maven: wsi:uddi4j:local" level="project" />
+    <orderEntry type="library" name="Maven: wsi:xercesImpl:local" level="project" />
+    <orderEntry type="library" name="Maven: wsi:xmlParserAPIs:local" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.jr:jackson-jr-objects:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.4.0" level="project" />

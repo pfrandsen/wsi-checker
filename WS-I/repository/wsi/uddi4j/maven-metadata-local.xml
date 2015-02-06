@@ -3,10 +3,10 @@
   <groupId>wsi</groupId>
   <artifactId>uddi4j</artifactId>
   <versioning>
-    <release>unknown</release>
+    <release>local</release>
     <versions>
-      <version>unknown</version>
+      <version>local</version>
     </versions>
-    <lastUpdated>20140609110519</lastUpdated>
+    <lastUpdated>20150205065435</lastUpdated>
   </versioning>
 </metadata>

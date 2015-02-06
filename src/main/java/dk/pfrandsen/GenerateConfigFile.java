@@ -96,7 +96,7 @@ public class GenerateConfigFile extends CommandLineTool {
                 "name of profile file to use; default is '" + getDefaultProfileName() + "'");
         profileName.setArgName("name");
         Option profileFile = new Option(OPTION_PROFILE_FILE, true,
-                "location of profile file to use; ignored in " + arg(OPTION_PROFILE_NAME) + " is provided");
+                "location of profile file to use; ignored if " + arg(OPTION_PROFILE_NAME) + " is provided");
         profileFile.setArgName("file");
         options.addOption(help);
         options.addOption(new Option(Runner.OPTION_CONFIG_FILE, "option to select this tool"));

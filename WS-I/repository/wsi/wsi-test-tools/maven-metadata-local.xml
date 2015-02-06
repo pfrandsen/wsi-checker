@@ -3,10 +3,10 @@
   <groupId>wsi</groupId>
   <artifactId>wsi-test-tools</artifactId>
   <versioning>
-    <release>1.0</release>
+    <release>local</release>
     <versions>
-      <version>1.0</version>
+      <version>local</version>
     </versions>
-    <lastUpdated>20140609110535</lastUpdated>
+    <lastUpdated>20150205065517</lastUpdated>
   </versioning>
 </metadata>

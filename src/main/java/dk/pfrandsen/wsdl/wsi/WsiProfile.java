@@ -44,6 +44,22 @@ public enum WsiProfile {
             return "http://ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html, " +
                     "http://ws-i.org/Profiles/SimpleSoapBindingProfile-1.0-2004-08-24.html";
         }
+    },
+
+    BASIC_PROFILE_11_SOAP_10_LIMITED {
+        public String getAssertionFilename() {
+            return "SSBP10_BP11_TAD_LIMITED.xml";
+        }
+
+        public String getDescription() {
+            return "SSBP1+BP11 Simple SOAP Binding Profile version 1.0 + Ba1sic Profile version 1.1 " +
+                    "Test Assertion Document (TAD), Final; BP2108, BP2110, BP2115 disabled.";
+        }
+
+        public String getLocation() {
+            return "http://ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html, " +
+                    "http://ws-i.org/Profiles/SimpleSoapBindingProfile-1.0-2004-08-24.html";
+        }
     };
 
     public abstract String getAssertionFilename();

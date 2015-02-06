@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>wsi</groupId>
-  <artifactId>uddi4j</artifactId>
-  <version>unknown</version>
+  <artifactId>wsi-test-tools</artifactId>
+  <version>local</version>
   <description>POM was created from install:install-file</description>
 </project>
