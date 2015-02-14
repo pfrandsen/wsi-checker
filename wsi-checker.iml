@@ -22,8 +22,8 @@
     <orderEntry type="library" name="Maven: wsi:wsi-test-tools:local" level="project" />
     <orderEntry type="library" name="Maven: wsi:wsdl4j:local" level="project" />
     <orderEntry type="library" name="Maven: wsi:uddi4j:local" level="project" />
-    <orderEntry type="library" name="Maven: wsi:xercesImpl:local" level="project" />
-    <orderEntry type="library" name="Maven: wsi:xmlParserAPIs:local" level="project" />
+    <orderEntry type="library" name="Maven: xerces:xmlParserAPIs:2.6.2" level="project" />
+    <orderEntry type="library" name="Maven: xerces:xercesImpl:2.6.2" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.jr:jackson-jr-objects:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.4.0" level="project" />

@@ -112,24 +112,29 @@ public class GenerateConfigFile extends CommandLineTool {
         return options;
     }
 
-    private String getTemplateContent(CommandLine cmd) {
+    public String getDefaultTemplate() {
         String templateContent = "";
+        String name = getBindingTemplateFilename();
+        try {
+            templateContent = BasicProfileConfig.getTemplateContent(name);
+        } catch (IOException e) {
+            setErrorMessage("Exception while loading template '" + name + ", " + e.getMessage());
+        }
+        return templateContent;
+    }
+
+    private String getTemplateContent(CommandLine cmd) {
         if (cmd.hasOption(OPTION_TEMPLATE)) {
             String templateArg = cmd.getOptionValue(OPTION_TEMPLATE);
             try {
-                templateContent = FileUtils.readFileToString(new File(templateArg));
+                return FileUtils.readFileToString(new File(templateArg));
             } catch (IOException e) {
                 setErrorMessage("Exception while loading template '" + templateArg + ", " + e.getMessage());
             }
         } else {
-            String name = getBindingTemplateFilename();
-            try {
-                templateContent = BasicProfileConfig.getTemplateContent(name);
-            } catch (IOException e) {
-                setErrorMessage("Exception while loading template '" + name + ", " + e.getMessage());
-            }
+            return getDefaultTemplate();
         }
-        return templateContent;
+        return "";
     }
 
     @Override
