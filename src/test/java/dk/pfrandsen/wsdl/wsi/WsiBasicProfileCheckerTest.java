@@ -1,6 +1,6 @@
 package dk.pfrandsen.wsdl.wsi;
 
-import dk.pfrandsen.check.AnalysisInformationCollector;
+import dk.pfrandsen.check.AnalysisInfoCollector;
 import dk.pfrandsen.wsdl.Util;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class WsiBasicProfileCheckerTest {
-    private AnalysisInformationCollector collector;
+    private AnalysisInfoCollector collector;
     private Path toolsRoot = Paths.get("WS-I", "wsi-test-tools");
     private WsiProfile profile = WsiProfile.BASIC_PROFILE_11_SOAP_10;
 
@@ -27,7 +27,7 @@ public class WsiBasicProfileCheckerTest {
 
     @Before
     public void setUp() {
-        collector = new AnalysisInformationCollector();
+        collector = new AnalysisInfoCollector();
     }
 
     @Test

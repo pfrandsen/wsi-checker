@@ -1,6 +1,6 @@
 package dk.pfrandsen.wsdl.wsi;
 
-import dk.pfrandsen.check.AnalysisInformationCollector;
+import dk.pfrandsen.check.AnalysisInfoCollector;
 import dk.pfrandsen.wsdl.Util;
 import org.uddi4j.transport.TransportFactory;
 import org.wsi.WSIException;
@@ -13,7 +13,7 @@ public class WsiBasicProfileChecker {
     public static String ASSERTION_ID = "WS-I WSDL Basic Profile Validation";
 
     public static void checkWsiBasicProfile(Path configFile, Path reportFile, Path wsiToolsRoot,
-                                            AnalysisInformationCollector collector) {
+                                            AnalysisInfoCollector collector) {
 
         String[] analyzerArgs = {"-config", configFile.toAbsolutePath().toString()};
         System.setProperty("wsi.home", wsiToolsRoot.toAbsolutePath().toString());
@@ -30,7 +30,7 @@ public class WsiBasicProfileChecker {
             // Have it process the conformance validation functions
             int statusCode = analyzer.validateConformance();
             collector.addInfo(ASSERTION_ID, "Analyzer status code " + statusCode,
-                    AnalysisInformationCollector.SEVERITY_LEVEL_UNKNOWN);
+                    AnalysisInfoCollector.SEVERITY_LEVEL_UNKNOWN);
             ReportParser parser = new ReportParser();
             try {
                 parser.parse(reportFile);
@@ -42,21 +42,21 @@ public class WsiBasicProfileChecker {
                         // ignore
                     }
                     collector.addError(ASSERTION_ID, "Validation failed",
-                            AnalysisInformationCollector.SEVERITY_LEVEL_CRITICAL,
+                            AnalysisInfoCollector.SEVERITY_LEVEL_CRITICAL,
                             "Profile description: " + description);
                 }
                 for (String error : parser.getErrors()) {
-                    collector.addError(ASSERTION_ID, error, AnalysisInformationCollector.SEVERITY_LEVEL_UNKNOWN);
+                    collector.addError(ASSERTION_ID, error, AnalysisInfoCollector.SEVERITY_LEVEL_UNKNOWN);
                 }
                 for (String warning : parser.getWarnings()) {
-                    collector.addError(ASSERTION_ID, warning, AnalysisInformationCollector.SEVERITY_LEVEL_UNKNOWN);
+                    collector.addError(ASSERTION_ID, warning, AnalysisInfoCollector.SEVERITY_LEVEL_UNKNOWN);
                 }
             } catch (Exception e) {
                 collector.addError(ASSERTION_ID, "Exception while parsing report file '" + reportFile + "'",
-                        AnalysisInformationCollector.SEVERITY_LEVEL_CRITICAL, e.getMessage());
+                        AnalysisInfoCollector.SEVERITY_LEVEL_CRITICAL, e.getMessage());
             }
         } catch (WSIException e) {
-            collector.addError(ASSERTION_ID, e.getMessage(), AnalysisInformationCollector.SEVERITY_LEVEL_CRITICAL);
+            collector.addError(ASSERTION_ID, e.getMessage(), AnalysisInfoCollector.SEVERITY_LEVEL_CRITICAL);
         }
     }
 

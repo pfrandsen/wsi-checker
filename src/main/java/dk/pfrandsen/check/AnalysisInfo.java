@@ -1,30 +1,30 @@
 package dk.pfrandsen.check;
 
-public class AnalysisInformation {
+public class AnalysisInfo {
     private String assertion;
     private String message;
     private int severity;
     private String details;
 
-    public AnalysisInformation() {
+    public AnalysisInfo() {
         this.assertion = "";
         this.message = "";
-        this.severity = AnalysisInformationCollector.SEVERITY_LEVEL_UNKNOWN;
+        this.severity = AnalysisInfoCollector.SEVERITY_LEVEL_UNKNOWN;
         this.details = "";
     }
 
-    public AnalysisInformation(String assertion, String message, int severity) {
+    public AnalysisInfo(String assertion, String message, int severity) {
         this(assertion, message, severity, "");
     }
 
-    public AnalysisInformation(String assertion, String message, int severity, String details) {
+    public AnalysisInfo(String assertion, String message, int severity, String details) {
         this.assertion = assertion;
         this.message = message;
         this.severity = severity;
         this.details = details;
     }
 
-    public AnalysisInformation(AnalysisInformation info) {
+    public AnalysisInfo(AnalysisInfo info) {
         this.assertion = info.assertion;
         this.message = info.message;
         this.severity = info.severity;

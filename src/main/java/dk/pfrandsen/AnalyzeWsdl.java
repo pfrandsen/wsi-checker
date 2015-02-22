@@ -1,7 +1,7 @@
 package dk.pfrandsen;
 
 import com.fasterxml.jackson.jr.ob.JSON;
-import dk.pfrandsen.check.AnalysisInformationCollector;
+import dk.pfrandsen.check.AnalysisInfoCollector;
 import dk.pfrandsen.wsdl.Util;
 import dk.pfrandsen.wsdl.wsi.WsiBasicProfileChecker;
 import org.apache.commons.cli.CommandLine;
@@ -68,7 +68,7 @@ public class AnalyzeWsdl extends CommandLineTool {
     public boolean run(CommandLine cmd) {
         Path rootFolder = Paths.get(cmd.getOptionValue(Runner.OPTION_ROOT)).toAbsolutePath();
         Path configFile = Paths.get(cmd.getOptionValue(OPTION_CONFIG));
-        AnalysisInformationCollector collector = new AnalysisInformationCollector();
+        AnalysisInfoCollector collector = new AnalysisInfoCollector();
         if (cmd.hasOption(OPTION_SUMMARY)) {
             Path summaryFile = Paths.get(cmd.getOptionValue(OPTION_SUMMARY));
             return analyzeWsdl(rootFolder, configFile, summaryFile, collector);
@@ -82,7 +82,7 @@ public class AnalyzeWsdl extends CommandLineTool {
         return "WSDL analysis completed with status: " + (runStatus ? "SUCCESS" : "FAILURE");
     }
 
-    public boolean analyzeWsdl(Path rootFolder, Path configFile, AnalysisInformationCollector collector) {
+    public boolean analyzeWsdl(Path rootFolder, Path configFile, AnalysisInfoCollector collector) {
         try {
             Path reportFile = Paths.get(Util.getReportLocationFromConfigFile((configFile)));
             System.out.println("Report file: " + reportFile);
@@ -92,20 +92,20 @@ public class AnalyzeWsdl extends CommandLineTool {
             return true;
         } catch (Exception e) {
             collector.addError(ASSERTION_ID, "Exception while running analyzer",
-                    AnalysisInformationCollector.SEVERITY_LEVEL_CRITICAL, e.getMessage());
+                    AnalysisInfoCollector.SEVERITY_LEVEL_CRITICAL, e.getMessage());
             setErrorMessage("Exception " + e.getMessage());
             return false;
         }
     }
 
     public boolean analyzeWsdl(Path rootFolder, Path configFile, Path summaryFile,
-                               AnalysisInformationCollector collector) {
+                               AnalysisInfoCollector collector) {
         boolean analysisStatus = analyzeWsdl(rootFolder, configFile, collector);
         try {
             JSON.std.with(JSON.Feature.PRETTY_PRINT_OUTPUT).write(collector, summaryFile.toFile());
         } catch (IOException e) {
             collector.addError(ASSERTION_ID, "Exception while writing summary file",
-                    AnalysisInformationCollector.SEVERITY_LEVEL_MAJOR, e.getMessage());
+                    AnalysisInfoCollector.SEVERITY_LEVEL_MAJOR, e.getMessage());
             setErrorMessage("Exception " + e.getMessage());
             return false;
         }
